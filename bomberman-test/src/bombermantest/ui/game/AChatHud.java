@@ -33,7 +33,6 @@ public abstract class AChatHud extends Screen3d {
 		//chatBox.getStyle().font = FontsLoader.singleton.hongkong.font;
 		//chatBox.setStyle(chatBox.getStyle()); // pour bien updater le style , sinon les modification peuvent ne pas prendre effets desfois
 		chatBox.setText("");
-		chatBox.setMessageText("allo test");
 		chatBox.setWidth(300);
 		chatBox.setHeight(200);
 		chatBox.pack();
@@ -43,7 +42,6 @@ public abstract class AChatHud extends Screen3d {
 		// TextEntry field
 		textEntry = new VisTextField();
 		textEntry.setText("");
-		textEntry.setMessageText("");
 		textEntry.addListener(new InputListener(){
 			@Override
 			public boolean keyDown(InputEvent event, int keycode) {
