@@ -33,7 +33,7 @@ public abstract class AChatHud extends Screen3d {
 		//chatBox.getStyle().font = FontsLoader.singleton.hongkong.font;
 		//chatBox.setStyle(chatBox.getStyle()); // pour bien updater le style , sinon les modification peuvent ne pas prendre effets desfois
 		chatBox.setText("");
-		chatBox.setMessageText("");
+		chatBox.setMessageText("allo test");
 		chatBox.setWidth(300);
 		chatBox.setHeight(200);
 		chatBox.pack();
