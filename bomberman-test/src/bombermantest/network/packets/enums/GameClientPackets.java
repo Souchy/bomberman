@@ -24,6 +24,7 @@ public enum GameClientPackets implements IPacket {
 	ENTITY_LIST(true, 0, 0),
 	
 	MOVE_PLAYER(true, 0, 0),
+	MOVE_PLAYER_LIST(true, 0, 0),
 	USE_WEAPON(true, 0, 0),
 	
 	CHAT(true, 0, 0),

@@ -10,6 +10,7 @@ import bombermantest.game.network.client.out.EntityComposer;
 import bombermantest.game.network.client.out.EntityListComposer;
 import bombermantest.game.network.client.out.GameStateComposer;
 import bombermantest.game.network.client.out.LostPlayerComposer;
+import bombermantest.game.network.client.out.MovePlayerListComposer;
 import bombermantest.network.packets.enums.GameClientPackets;
 
 public final class ClientPacketInjector {
@@ -25,11 +26,14 @@ public final class ClientPacketInjector {
 		GameClientPackets.ENTITY_LIST.setComposer(new EntityListComposer());
 		GameClientPackets.LOST_PLAYER.setComposer(new LostPlayerComposer());
 		
-		GameClientPackets.MOVE_PLAYER.setParser(new MovePlayerParser());
+		//GameClientPackets.MOVE_PLAYER.setParser(new MovePlayerParser());
 		GameClientPackets.USE_WEAPON.setParser(new UseWeaponParser());
 
 		GameClientPackets.CHAT.setParser(new ChatParser());
 		GameClientPackets.CHAT.setComposer(new ChatComposer());
+		
+		GameClientPackets.MOVE_PLAYER.setParser(new MovePlayerParser());
+		GameClientPackets.MOVE_PLAYER_LIST.setComposer(new MovePlayerListComposer());
 	}
 	
 }

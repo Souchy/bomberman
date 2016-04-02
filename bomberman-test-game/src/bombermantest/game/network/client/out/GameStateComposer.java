@@ -13,7 +13,7 @@ public class GameStateComposer implements Composer {
 		byte onConnect = (byte) ((boolean) objects[0] ? 1 : 0);
 		
 		buf.putEnum(GameState.state);
-		buf.putLong(GameState.state.timer);
+		buf.putLong(GameState.timer);
 		buf.put(onConnect);
 		
 		//Map<Long, IoSession> sessions = GClientServer.get().acceptor.getManagedSessions();
