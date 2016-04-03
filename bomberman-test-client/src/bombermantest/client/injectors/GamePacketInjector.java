@@ -9,6 +9,7 @@ import bombermantest.client.network.game.in.GameAuthentificationResultParser;
 import bombermantest.client.network.game.in.GameStateParser;
 import bombermantest.client.network.game.in.LostPlayerParser;
 import bombermantest.client.network.game.in.MovePlayerListParser;
+import bombermantest.client.network.game.in.UseWeaponParser;
 import bombermantest.client.network.game.out.ChatComposer;
 import bombermantest.client.network.game.out.GameAuthentificationComposer;
 import bombermantest.client.network.game.out.MovePlayerComposer;
@@ -31,6 +32,7 @@ public final class GamePacketInjector {
 		
 		//GameClientPackets.MOVE_PLAYER.setComposer(new MovePlayerComposer());
 		GameClientPackets.USE_WEAPON.setComposer(new UseWeaponComposer());
+		GameClientPackets.USE_WEAPON.setParser(new UseWeaponParser());
 		
 		GameClientPackets.CHAT.setParser(new ChatParser());
 		GameClientPackets.CHAT.setComposer(new ChatComposer());
