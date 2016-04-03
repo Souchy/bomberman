@@ -13,7 +13,6 @@ public class CPlayerController extends PlayerController {
 
 	public CPlayerController(BPlayer player) {
 		super(player);
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -23,7 +22,8 @@ public class CPlayerController extends PlayerController {
 	 * @param u 
 	 */
 	protected void sendUseWeapon(Weapon weapon, Vector2 pos, Vector2 u){
-		GameClientPackets.USE_WEAPON.compose(GameClient.get().session, weapon, pos, u);
+		//GameClientPackets.USE_WEAPON.compose(GameClient.get().session, weapon, pos, u);
+		GameClientPackets.USE_WEAPON.compose(GameClient.get().session, u);
 	}
 	
 	/**
