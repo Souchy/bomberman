@@ -61,7 +61,9 @@ public class ClientGame extends TestGame {
 		StatusHud.get();
 		ChatHud.get();
 
-		setScreen(LoginScreen.get());
+		//setScreen(LoginScreen.get());
+		
+		setScreen(ChatHud.get());
 		
 	}
 

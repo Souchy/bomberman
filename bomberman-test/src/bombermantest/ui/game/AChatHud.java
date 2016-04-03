@@ -3,10 +3,17 @@ package bombermantest.ui.game;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
+import com.badlogic.gdx.utils.Align;
+import com.kotcrab.vis.ui.widget.VisLabel;
 import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextArea;
 import com.kotcrab.vis.ui.widget.VisTextField;
+import com.mygdx.engine.actors.MyLabel;
 import com.mygdx.engine.screens.Screen3d;
+
+import bombermantest.events.SpectatingClickListener;
 
 public abstract class AChatHud extends Screen3d {
 
@@ -20,24 +27,31 @@ public abstract class AChatHud extends Screen3d {
 	protected VisTable table;
 	protected VisTextArea chatBox;
 	protected VisTextField textEntry;
+	protected MyLabel play;
 	
 	@Override
 	public void postCreateHook() {
         // Table
 		table = new VisTable(true);
 		table.setPosition(200, 200);
+		table.align(Align.left);
 		hud.addActor(table);
 		
 		// chatbox
 		chatBox = new VisTextArea();
 		//chatBox.getStyle().font = FontsLoader.singleton.hongkong.font;
 		//chatBox.setStyle(chatBox.getStyle()); // pour bien updater le style , sinon les modification peuvent ne pas prendre effets desfois
-		chatBox.setText("");
+		chatBox.setText("bou jhsb dfgkjnsdkfjgnlkfdgn dskf sdlk fns");
 		chatBox.setMessageText("allo test chatBox");
-		chatBox.setWidth(300);
-		chatBox.setHeight(200);
+		chatBox.setTextFieldListener(null);
+		chatBox.removeListener(chatBox.getDefaultInputListener());
+		//new VisTextField.TextFieldClickListener();
+		chatBox.addListener(new InputListener());
+		chatBox.addListener(new ClickListener());
+		chatBox.addListener(new DragListener());
+		//chatBox.setDisabled(true);
 		chatBox.pack();
-		table.add(chatBox);
+		table.add(chatBox).width(300).height(150);
 		table.row();
 		
 		// TextEntry field
@@ -55,7 +69,7 @@ public abstract class AChatHud extends Screen3d {
 			}
 		});
 		textEntry.pack();
-		table.add(textEntry);
+		table.add(textEntry).width(300);
 		table.row();
 		
 		table.pack();

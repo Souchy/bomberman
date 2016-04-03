@@ -36,7 +36,6 @@ public class ChatHud extends AChatHud {
 		String[] textt = text.split(" ", 1);
 		String command = textt[0].toLowerCase();
 		String input = textt[1];
-		
 		switch(command){
 			case "all": 
 				input = "[ALL] " + "[SERVER]" + " : " + input;
