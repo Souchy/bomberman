@@ -35,7 +35,7 @@ public class CommandParser implements Parser {
 			case "suicide": 
 				client.player.getBStats().life = 0;
 				PlayerDeathEvent.post(client.player, client.player);
-				GameClientPackets.SUICIDE.broadcast(GClientServer.get().getSessionList(), client.id);
+				GameClientPackets.SUICIDE.broadcast(GClientServer.get().getSessionListBut(session), client.id);
 			break;
 			default : System.out.println("[Serv] Recv Commande inconnue. : ["+command+"]"); break;
 		}
