@@ -21,6 +21,7 @@ public class GClient implements Disposable {
 	public BPlayer player;
 	
 	/**
+	 * Couleur de l'équipe en rgba8888 <p>
 	 * TODO assigne des numéros/couleurs d'équipes aux gclient
 	 */
 	public int team;
