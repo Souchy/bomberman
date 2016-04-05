@@ -5,6 +5,9 @@ import com.mygdx.engine.events.PlayerDeathEvent;
 
 import bombermantest.client.main.testClientConfig;
 import bombermantest.client.network.client.game.GameClient;
+import bombermantest.enums.ClientState;
+import bombermantest.enums.GameState;
+import bombermantest.main.TestGame;
 import bombermantest.network.packets.enums.GameClientPackets;
 import bombermantest.ui.game.AChatHud;
 
@@ -36,7 +39,10 @@ public class ChatHud extends AChatHud {
 		chatBox.setColor(Color.YELLOW);
 		String[] textt = text.split(" ", 1);
 		String command = textt[0].toLowerCase();
-		String input = textt[1];
+		String input = textt.length == 1 ? "" : textt[1];
+		
+		if(!commandCondition(command)) return;
+		
 		switch(command){
 			case "all": 
 				input = "[ALL] " + GameClient.getMyClient().name + " : " + input;
@@ -58,7 +64,24 @@ public class ChatHud extends AChatHud {
 		}
 		
 	}
-
+	
+	private boolean commandCondition(String command){
+		boolean condOk;
+		switch(command){
+			case "all": 
+				condOk = (GameState.state != GameState.INGAME);
+			case "s": 
+			case "suicide": 
+				condOk = (GameState.state != GameState.INGAME || GameClient.getMyClient().state != ClientState.PLAYING);
+			default : 
+				condOk = true;
+		}
+		
+		if(!condOk) addMessage("You cant use this command at this time."); 
+		
+		return condOk;
+	}
+	
 	@Override
 	protected int getFocusChatKey() {
 		return testClientConfig.focusChatKey;
