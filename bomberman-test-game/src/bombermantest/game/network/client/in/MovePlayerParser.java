@@ -8,7 +8,6 @@ import org.apache.mina.core.session.IoSession;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 
 import bombermantest.network.handlers.ServerHandler;
 import bombermantest.network.objects.GClient;

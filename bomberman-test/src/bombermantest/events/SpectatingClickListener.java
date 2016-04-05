@@ -1,9 +1,5 @@
 package bombermantest.events;
 
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.mygdx.engine.game.Lambda;

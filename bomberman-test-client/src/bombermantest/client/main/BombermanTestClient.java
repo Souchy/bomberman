@@ -2,7 +2,6 @@ package bombermantest.client.main;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.badlogic.gdx.graphics.Color;
 import com.mygdx.engine.configs.AConstants;
 
 import bombermantest.client.injectors.EntityDecoderInjector;

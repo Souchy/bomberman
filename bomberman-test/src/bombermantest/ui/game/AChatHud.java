@@ -6,14 +6,11 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.utils.Align;
-import com.kotcrab.vis.ui.widget.VisLabel;
 import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextArea;
 import com.kotcrab.vis.ui.widget.VisTextField;
 import com.mygdx.engine.actors.MyLabel;
 import com.mygdx.engine.screens.Screen3d;
-
-import bombermantest.events.SpectatingClickListener;
 
 public abstract class AChatHud extends Screen3d {
 

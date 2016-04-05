@@ -1,6 +1,7 @@
 package bombermantest.client.network.game.out;
 
-import static com.mygdx.engine.configs.AConstants.*;
+import static com.mygdx.engine.configs.AConstants.putVector2;
+
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 

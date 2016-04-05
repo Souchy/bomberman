@@ -1,7 +1,6 @@
 package bombermantest.game.events;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.google.common.eventbus.Subscribe;
 
@@ -12,7 +11,6 @@ import bombermantest.game.main.GameGame;
 import bombermantest.game.network.game.client.GClientServer;
 import bombermantest.generation.Generation;
 import bombermantest.main.TestGame;
-import bombermantest.network.objects.GClient;
 import bombermantest.network.packets.enums.GameClientPackets;
 import bombermantest.objects.characters.playables.BPlayer;
 import bombermantest.ui.game.GameScreen;

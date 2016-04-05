@@ -17,7 +17,6 @@ import bombermantest.client.ui.login.LoginScreen;
 import bombermantest.configs.Constants;
 import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;
-import bombermantest.ui.game.AChatHud;
 import bombermantest.ui.game.GameScreen;
 import bombermantest.ui.game.OutGameScreen;
 import bombermantest.ui.game.PreparingGameScreen;

@@ -6,7 +6,6 @@ import static com.mygdx.engine.configs.AConstants.putVector3;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 
-
 import bombermantest.network.packets.Composer;
 import bombermantest.objects.characters.playables.BPlayer;
 

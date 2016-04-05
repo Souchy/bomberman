@@ -11,7 +11,6 @@ import org.apache.mina.core.session.IoSession;
 import bombermantest.enums.ClientState;
 import bombermantest.network.objects.GClient;
 import bombermantest.network.packets.Composer;
-import bombermantest.objects.characters.playables.BPlayer;
 
 public class MovePlayerListComposer implements Composer {
 
