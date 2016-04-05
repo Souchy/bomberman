@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextArea;
 import com.kotcrab.vis.ui.widget.VisTextField;
+import com.mygdx.engine.events.PlayerDeathEvent;
 import com.mygdx.engine.screens.Screen3d;
 import com.mygdx.engine.services.FontsLoader;
 
@@ -55,6 +56,15 @@ public class ChatHud extends AChatHud {
 				input = "[ALL] " + GameClient.getMyClient().name + " : " + input;
 				GameClientPackets.CHAT.compose(GameClient.get().getSession(), input, Color.rgba8888(Color.YELLOW)); 
 				addMessage(input); 
+			break;
+			case "s": 
+			case "suicide": 
+				//input = "[ALL] " + GameClient.getMyClient().name + " : " + input;
+				//GameClientPackets.CHAT.compose(GameClient.get().getSession(), input, Color.rgba8888(Color.YELLOW)); 
+				//addMessage(input); 
+				
+				GameClient.getMyClient().player.getBStats().life = 0;
+				PlayerDeathEvent.post(GameClient.getMyClient().player, GameClient.getMyClient().player);
 			break;
 			default : addMessage("Commande inconnue."); break;
 		}
