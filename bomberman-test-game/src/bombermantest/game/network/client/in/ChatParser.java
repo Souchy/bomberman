@@ -2,7 +2,6 @@ package bombermantest.game.network.client.in;
 
 import java.nio.charset.CharacterCodingException;
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import org.apache.mina.core.buffer.IoBuffer;
@@ -12,7 +11,6 @@ import com.badlogic.gdx.graphics.Color;
 
 import bombermantest.game.network.game.client.GClientServer;
 import bombermantest.game.ui.ChatHud;
-import bombermantest.main.TestGame;
 import bombermantest.network.handlers.ServerHandler;
 import bombermantest.network.objects.GClient;
 import bombermantest.network.packets.Parser;

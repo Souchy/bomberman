@@ -16,6 +16,7 @@ import bombermantest.game.network.game.login.GLoginClient;
 import bombermantest.game.ui.ChatHud;
 import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;
+import bombermantest.network.packets.enums.GameClientPackets;
 import bombermantest.ui.game.GameScreen;
 import bombermantest.ui.game.OutGameScreen;
 import bombermantest.ui.game.PreparingGameScreen;
@@ -64,6 +65,10 @@ public class GameGame extends TestGame {
 	public void render () {
 		super.render();
 		
+		if(GameState.state != GameState.OUTGAME){
+			GameClientPackets.MOVE_PLAYER_LIST.broadcast(GClientServer.get().getSessionList(), TestGame.get().getClientList());
+		}
+		
 		if(GameState.state != GameState.INGAME && GameState.state.timeRemaining() <= 0 && GClientServer.get().getClientCount() > 0){
 			System.out.println("gamegame.render -> change screen");
 			GameStateChangeEvent.post(GameState.state, GameState.state.getNext());
@@ -81,7 +86,7 @@ public class GameGame extends TestGame {
 		GameScreen.get().dispose();
 		StatusHud.get().dispose();
 		ChatHud.get().dispose();
-
+		
 		GClientServer.get().off(true);
 		GLoginClient.get().off(true);
 	}

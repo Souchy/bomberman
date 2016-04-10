@@ -1,23 +1,13 @@
 package bombermantest.client.ui.game;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
-import com.kotcrab.vis.ui.widget.VisTable;
-import com.kotcrab.vis.ui.widget.VisTextArea;
-import com.kotcrab.vis.ui.widget.VisTextField;
-import com.mygdx.engine.screens.Screen3d;
-import com.mygdx.engine.services.FontsLoader;
+import com.mygdx.engine.events.PlayerDeathEvent;
 
 import bombermantest.client.main.testClientConfig;
 import bombermantest.client.network.client.game.GameClient;
+import bombermantest.enums.ClientState;
+import bombermantest.enums.GameState;
 import bombermantest.main.TestGame;
-import bombermantest.network.objects.GClient;
 import bombermantest.network.packets.enums.GameClientPackets;
 import bombermantest.ui.game.AChatHud;
 
@@ -49,18 +39,49 @@ public class ChatHud extends AChatHud {
 		chatBox.setColor(Color.YELLOW);
 		String[] textt = text.split(" ", 1);
 		String command = textt[0].toLowerCase();
-		String input = textt[1];
+		String input = textt.length == 1 ? "" : textt[1];
+		
+		if(!commandCondition(command)) return;
+		
 		switch(command){
 			case "all": 
 				input = "[ALL] " + GameClient.getMyClient().name + " : " + input;
 				GameClientPackets.CHAT.compose(GameClient.get().getSession(), input, Color.rgba8888(Color.YELLOW)); 
 				addMessage(input); 
 			break;
+			case "s": 
+			case "suicide": 
+				//input = "[ALL] " + GameClient.getMyClient().name + " : " + input;
+				//GameClientPackets.CHAT.compose(GameClient.get().getSession(), input, Color.rgba8888(Color.YELLOW)); 
+				//addMessage(input); 
+				
+				GameClient.getMyClient().player.getBStats().life = 0;
+				PlayerDeathEvent.post(GameClient.getMyClient().player, GameClient.getMyClient().player);
+				
+				GameClientPackets.COMMAND.compose(GameClient.get().getSession(), command);
+			break;
 			default : addMessage("Commande inconnue."); break;
 		}
 		
 	}
-
+	
+	private boolean commandCondition(String command){
+		boolean condOk;
+		switch(command){
+			case "all": 
+				condOk = (GameState.state != GameState.INGAME);
+			case "s": 
+			case "suicide": 
+				condOk = (GameState.state != GameState.INGAME || GameClient.getMyClient().state != ClientState.PLAYING);
+			default : 
+				condOk = true;
+		}
+		
+		if(!condOk) addMessage("You cant use this command at this time."); 
+		
+		return condOk;
+	}
+	
 	@Override
 	protected int getFocusChatKey() {
 		return testClientConfig.focusChatKey;

@@ -9,7 +9,6 @@ import bombermantest.client.main.ClientGame;
 import bombermantest.enums.ClientState;
 import bombermantest.enums.GameState;
 import bombermantest.main.TestGame;
-import bombermantest.network.objects.GClient;
 import bombermantest.network.packets.Parser;
 import bombermantest.ui.game.GameScreen;
 import bombermantest.ui.game.OutGameScreen;

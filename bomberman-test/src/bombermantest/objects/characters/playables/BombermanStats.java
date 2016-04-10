@@ -4,12 +4,6 @@ import com.mygdx.engine.objects.characters.EntityStats;
 
 public class BombermanStats extends EntityStats {
 
-	public static enum ClientState {
-		INGAME,
-		OUTGAME,
-		SPECTATING;
-	}
-	
 	public BPlayer player;
 	
 	public int nbBombsMax = 1;
@@ -24,7 +18,7 @@ public class BombermanStats extends EntityStats {
 	public int kills = 0;
 	public int deaths = 0;*/
 	
-	public ClientState state = ClientState.OUTGAME;
+	//public ClientState state = ClientState.SPECTATING;
 	
 	
 	public float getTotSpeed(){

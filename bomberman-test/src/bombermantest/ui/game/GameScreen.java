@@ -1,6 +1,5 @@
 package bombermantest.ui.game;
 
-import java.util.Optional;
 import java.util.concurrent.Executors;
 
 import com.badlogic.gdx.Gdx;
@@ -27,7 +26,6 @@ import bombermantest.enums.ClientState;
 import bombermantest.events.SpectatingClickListener;
 import bombermantest.events.TextPopupEvent;
 import bombermantest.main.TestGame;
-import bombermantest.network.objects.GClient;
 import bombermantest.objects.characters.playables.BPlayer;
 
 public class GameScreen extends Screen3d {
@@ -221,6 +219,8 @@ public class GameScreen extends Screen3d {
 			
 			hud.addActor(popup);
 			popup.addAction(Actions.sequence(Actions.alpha(0.0f), Actions.fadeIn(0.3f), Actions.delay(0.6f), Actions.fadeOut(0.3f), Actions.removeActor()));
+			
+			AChatHud.get().addMessage(event.getText());
 		});
 	}
 

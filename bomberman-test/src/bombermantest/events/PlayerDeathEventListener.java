@@ -12,17 +12,18 @@ import bombermantest.objects.characters.playables.BombermanStats;
 public class PlayerDeathEventListener {
 	
 	private String[] words = new String[]{
-			"killed", "decimated", "destroyed", "exploded", "anihilated", "BURNED", "ate", "rolled over"
+			"killed", "decimated", "destroyed", "exploded", "anihilated", "BURNED", "ate", "rolled over",
+			"olaf'd"
 	};
 	
 	@Subscribe 
 	public void listen(PlayerDeathEvent event){
 		System.out.println("GREEEEEEEEE");
 		
-		BombermanStats killerStats = (BombermanStats) event.getKiller().getWeaponHolderStats();
-		BombermanStats deadStats = (BombermanStats) event.getDead().getStats();
-
-
+		BombermanStats killerStats = (BombermanStats) event.getKiller();
+		BombermanStats deadStats = (BombermanStats) event.getDead();
+		
+		
 		String word = words[AConstants.rnd.nextInt(words.length)];
 		if(killerStats == deadStats){
 			TextPopupEvent.post(killerStats.player.client.name + " " + word + " himself like a n00b.");
