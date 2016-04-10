@@ -15,6 +15,7 @@ import bombermantest.client.ui.game.ChatHud;
 import bombermantest.client.ui.login.GameServerListScreen;
 import bombermantest.client.ui.login.LoginScreen;
 import bombermantest.configs.Constants;
+import bombermantest.enums.ClientState;
 import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;
 import bombermantest.ui.game.GameScreen;
@@ -60,9 +61,9 @@ public class ClientGame extends TestGame {
 		StatusHud.get();
 		ChatHud.get();
 
-		//setScreen(LoginScreen.get());
+		setScreen(LoginScreen.get());
 		
-		setScreen(ChatHud.get());
+		//setScreen(ChatHud.get());
 		
 	}
 
@@ -110,6 +111,16 @@ public class ClientGame extends TestGame {
 	@Override
 	public GClient getClient(long id) {
 		return GameClient.clients.get(id);
+	}
+
+	@Override
+	public ClientState getClientState() {
+		return GameClient.getMyClient().state;
+	}
+
+	@Override
+	public void setClientState(ClientState state) {
+		GameClient.getMyClient().state = state;
 	}
 	
 }

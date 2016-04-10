@@ -9,15 +9,11 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
 import com.kotcrab.vis.ui.widget.VisTable;
 import com.kotcrab.vis.ui.widget.VisTextArea;
 import com.kotcrab.vis.ui.widget.VisTextField;
-import com.kotcrab.vis.ui.widget.VisTextField.TextFieldClickListener;
 import com.kotcrab.vis.ui.widget.VisTextField.VisTextFieldStyle;
 import com.mygdx.engine.actors.MyLabel;
 import com.mygdx.engine.screens.Screen3d;
@@ -53,7 +49,7 @@ public abstract class AChatHud extends Screen3d {
 		skin.add("white", new Texture(pixmap));
 		
 		Color charcoal = new Color(47/255f, 47/255f, 47/255f, 1);;
-		Color bgcolor = Color.WHITE;//charcoal;
+		Color bgcolor = charcoal;
 		Color fontcolor = Color.WHITE;
 		
 		VisTextFieldStyle cbStyle = new VisTextFieldStyle();
@@ -63,7 +59,7 @@ public abstract class AChatHud extends Screen3d {
 		cbStyle.disabledFontColor = Color.CHARTREUSE;
 		cbStyle.focusedBackground = skin.newDrawable("white", bgcolor);
 		cbStyle.font = new BitmapFont(); //FontsLoader.singleton.hongkong.font;
-		cbStyle.font.getData().setScale(1.1f);
+		cbStyle.font.getData().setScale(1.0f);
 		cbStyle.fontColor = fontcolor;
 		cbStyle.focusedFontColor = fontcolor;
 		cbStyle.messageFont = new BitmapFont();

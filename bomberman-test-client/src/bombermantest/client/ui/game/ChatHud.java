@@ -7,7 +7,6 @@ import bombermantest.client.main.testClientConfig;
 import bombermantest.client.network.client.game.GameClient;
 import bombermantest.enums.ClientState;
 import bombermantest.enums.GameState;
-import bombermantest.main.TestGame;
 import bombermantest.network.packets.enums.GameClientPackets;
 import bombermantest.ui.game.AChatHud;
 
@@ -55,24 +54,23 @@ public class ChatHud extends AChatHud {
 				//GameClientPackets.CHAT.compose(GameClient.get().getSession(), input, Color.rgba8888(Color.YELLOW)); 
 				//addMessage(input); 
 				
-				GameClient.getMyClient().player.getBStats().life = 0;
+				//GameClient.getMyClient().player.getBStats().life = 0; //déplacé dans le playerDeathEventListener
 				PlayerDeathEvent.post(GameClient.getMyClient().player, GameClient.getMyClient().player);
 				
 				GameClientPackets.COMMAND.compose(GameClient.get().getSession(), command);
 			break;
 			default : addMessage("Commande inconnue."); break;
 		}
-		
 	}
 	
 	private boolean commandCondition(String command){
 		boolean condOk;
 		switch(command){
 			case "all": 
-				condOk = (GameState.state != GameState.INGAME);
+				condOk = (GameState.state == GameState.INGAME);
 			case "s": 
 			case "suicide": 
-				condOk = (GameState.state != GameState.INGAME || GameClient.getMyClient().state != ClientState.PLAYING);
+				condOk = (GameState.state == GameState.INGAME && GameClient.getMyClient().state == ClientState.PLAYING);
 			default : 
 				condOk = true;
 		}

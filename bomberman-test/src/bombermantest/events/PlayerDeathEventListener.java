@@ -8,6 +8,7 @@ import bombermantest.enums.ClientState;
 import bombermantest.enums.GameState;
 import bombermantest.main.TestGame;
 import bombermantest.objects.characters.playables.BombermanStats;
+import bombermantest.ui.game.ScoreboardScreen;
 
 public class PlayerDeathEventListener {
 	
@@ -22,7 +23,7 @@ public class PlayerDeathEventListener {
 		
 		BombermanStats killerStats = (BombermanStats) event.getKiller();
 		BombermanStats deadStats = (BombermanStats) event.getDead();
-		
+
 		
 		String word = words[AConstants.rnd.nextInt(words.length)];
 		if(killerStats == deadStats){
@@ -32,7 +33,11 @@ public class PlayerDeathEventListener {
 			killerStats.player.client.kills++;
 		}
 		
+		deadStats.life = 0; // au cas ou, comme dans le cas ou on se suicide
 		deadStats.player.client.deaths++;
+		deadStats.player.client.state = ClientState.SPECTATING;
+		
+		ScoreboardScreen.get().updateClientList(); 
 		
 		long playingCount = TestGame.get().getClientList().stream().filter(c -> c.state == ClientState.PLAYING).count();
 		if(playingCount == 0){

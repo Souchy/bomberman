@@ -5,6 +5,7 @@ import java.util.Collection;
 import com.mygdx.engine.configs.AConstants.Platform;
 import com.mygdx.engine.game.AGame;
 
+import bombermantest.enums.ClientState;
 import bombermantest.network.objects.GClient;
 
 public abstract class TestGame extends AGame {
@@ -39,6 +40,8 @@ public abstract class TestGame extends AGame {
 	public abstract Collection<Long> getClientIDList();
 	public abstract Collection<GClient> getClientList();
 	public abstract GClient getClient(long id);
+	public abstract ClientState getClientState();
+	public abstract void setClientState(ClientState state);
 	
 
 }

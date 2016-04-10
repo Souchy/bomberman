@@ -18,8 +18,10 @@ public class SpectatingClickListener extends ClickListener {
 	@Override
 	public void clicked(InputEvent event, float x, float y) {
 		super.clicked(event, x, y);
-		if(ClientState.state == ClientState.SPECTATING || 
-		  (ClientState.state == ClientState.PLAYING && TestGame.get().universe.player.getStats().life <= 0)){ // si le main player est mort, il peut spec les autres
+		if(TestGame.get().getClientState() == ClientState.SPECTATING //|| 
+			//(TestGame.get().getClientState() == ClientState.PLAYING && TestGame.get().universe.player.getStats().life <= 0) // si le main player est mort, il peut spec les autres
+			// ^ pu besoin de ça, mtn on met le state du player à spectating quand il meurt
+		){
 			//System.out.println("clicking, index=["+index+"/"+Client.get().players.size()+"], camTarget=["+camTarget+"], mainPlay=["+TestGame.get().universe.player+"]");
 			
 			Box2dObject previous = GameScreen.get().camTarget;
@@ -30,41 +32,6 @@ public class SpectatingClickListener extends ClickListener {
 			}
 			
 			Lambda lambda = () -> {
-				
-				/*TestGame.get().getClientList().stream().filter(c -> c.state == ClientState.PLAYING)
-					.filter(c -> c.player.body != null) // SI T'ES PLAYING, ÇA IMPLIQUE QUE T'AS UN BPLAYER
-					.skip(index).findFirst()
-	   				.ifPresent(c -> {
-	   					GameScreen.get().camTarget = c.player;
-	   					index++;
-	   				});
-				if(GameScreen.get().camTarget == null){
-					TestGame.get().getClientList().stream() .filter(c -> c.state == ClientState.PLAYING).filter(c -> c.player.body != null).findFirst()
-	   				.ifPresent(c -> {
-	   					GameScreen.get().camTarget = c.player;
-	   					index = 0;
-	   				});
-				}*/
-	   				//.filter(c -> c.player != null)
-	   				//.filter(c -> c.player.body != null);
-				
-				/*if(gs.count() > index){
-					gs.skip(index).findFirst().ifPresent(c -> GameScreen.get().camTarget = c.player);
-				}else{
-					gs.findFirst().ifPresent(g -> GameScreen.get().camTarget = g.player);
-					index = 1;
-				}*/
-				/*Optional<GClient> first = gs.findFirst();
-				Optional<GClient> c = gs.skip(index).findFirst();
-				if(c.isPresent()){ 
-					GameScreen.get().camTarget = c.get().player; 
-					index++; 
-				} else {
-					first.ifPresent(g -> GameScreen.get().camTarget = g.player);
-					index = 1;
-				}*/
-				
-				//int i = 1;
 				for(GClient target : TestGame.get().getClientList()){
 					if(target.player != GameScreen.get().camTarget && i >= index && target.player != null /*&& target != TestGame.get().universe.player*/){
 						GameScreen.get().camTarget = target.player;
@@ -77,8 +44,7 @@ public class SpectatingClickListener extends ClickListener {
 			
 			lambda.call();
 				
-			System.out.println("spectate = ["+GameScreen.get().camTarget+"], "
-					+ "body = ["+(GameScreen.get().camTarget != null ? GameScreen.get().camTarget.body : "null target")+"]");
+			System.out.println("spectate = ["+GameScreen.get().camTarget+"], body = ["+(GameScreen.get().camTarget != null ? GameScreen.get().camTarget.body : "null target")+"]");
 			
 			if(GameScreen.get().camTarget == previous){
 				index = 1;

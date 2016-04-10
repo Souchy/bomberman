@@ -16,7 +16,7 @@ public class SuicideParser implements Parser {
 		long id = buf.getLong();
 		
 		GClient client = TestGame.get().getClient(id);
-		client.player.getBStats().life = 0;
+		//client.player.getBStats().life = 0; //déplacé dans le playerDeathEventListener
 		PlayerDeathEvent.post(client.player, client.player);
 		
 	}

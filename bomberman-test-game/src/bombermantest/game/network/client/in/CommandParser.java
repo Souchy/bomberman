@@ -33,7 +33,7 @@ public class CommandParser implements Parser {
 			break;*/
 			case "s": 
 			case "suicide": 
-				client.player.getBStats().life = 0;
+				//client.player.getBStats().life = 0; //déplacé dans le playerDeathEventListener
 				PlayerDeathEvent.post(client.player, client.player);
 				GameClientPackets.SUICIDE.broadcast(GClientServer.get().getSessionListBut(session), client.id);
 			break;

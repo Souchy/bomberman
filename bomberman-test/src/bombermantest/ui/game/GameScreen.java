@@ -84,11 +84,11 @@ public class GameScreen extends Screen3d {
 	}
 	
 	public void resetCamTarget(){
-       	if(ClientState.state == ClientState.PLAYING) {
+		if(TestGame.get().getClientState() == ClientState.PLAYING) {
        		camTarget = TestGame.get().universe.player;
        	} else {
        		TestGame.get().getClientList().stream()
-       				.filter(c -> c.state == ClientState.PLAYING) // SI T'ES PLAYING, ÇA IMPLIQUE QUE T'AS UN BPLAYER
+       				.filter(c -> c.state == ClientState.PLAYING) // SI T'ES PLAYING, ÇA IMPLIQUE QUE T'AS UN BPLAYER ET QUE T'ES PAS MORT
        				.filter(c -> c.player != null)
        				.filter(c -> c.player.body != null) // il est ptete pas encore build() par contre
        				.findFirst()

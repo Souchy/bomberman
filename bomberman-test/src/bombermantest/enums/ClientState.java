@@ -6,7 +6,7 @@ public enum ClientState {
 	SPECTATING
 	;
 	
-	public static ClientState state = PLAYING;
+	//public static ClientState state = PLAYING;
 	
 	
 	

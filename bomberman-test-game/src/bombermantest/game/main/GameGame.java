@@ -9,6 +9,7 @@ import com.mygdx.engine.configs.AConstants.Platform;
 import com.mygdx.engine.game.CollisionListenerBox2d;
 
 import bombermantest.configs.Constants;
+import bombermantest.enums.ClientState;
 import bombermantest.enums.GameState;
 import bombermantest.events.GameStateChangeEvent;
 import bombermantest.game.network.game.client.GClientServer;
@@ -111,5 +112,16 @@ public class GameGame extends TestGame {
 		return GClientServer.get().getClient(id);
 	}
 
+
+	@Override
+	public ClientState getClientState() {
+		return ClientState.PLAYING;
+	}
+
+	@Override
+	public void setClientState(ClientState state) {
+		System.out.println("cant set the clientState in gameserver");
+		System.exit(0);
+	}
 
 }
