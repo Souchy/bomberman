@@ -22,7 +22,7 @@ public class EntityParser implements Parser {
 			Box2dObject box = (Box2dObject) entity;
 			Vector3 pos = getVector3(buf, new Vector3()); // 3 * 4
 			box.gfx.transform.setTranslation(pos); //set la gfxpos pour que le body soit placé dessus quand .build() et .toBox2d() est callé
-			box.publishThreaded(true);
+			box.publish();
 		}
 	}
 

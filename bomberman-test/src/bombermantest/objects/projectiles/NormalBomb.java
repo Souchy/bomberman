@@ -41,7 +41,7 @@ public class NormalBomb extends Projectile {
 			// explosion
 			float radius = stats.power / 2;
 			ExplosionWave expl = new ExplosionWave(game, getPos(), radius, weaponHolderStats);
-			expl.publishThreaded(true);
+			expl.publish();
 			
 		}
 	}

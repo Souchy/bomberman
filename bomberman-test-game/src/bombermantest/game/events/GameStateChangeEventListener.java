@@ -44,7 +44,7 @@ public class GameStateChangeEventListener {
 		// met tout le monde à jouer
 		TestGame.get().getClientList().forEach(c -> c.state = ClientState.PLAYING);
 		// vide les anciennes instances du monde 
-		TestGame.get().universe.instances.forEach(c -> c.dispose());
+		TestGame.get().universe.instances.forEach(c -> c.dispose(false));
 		
 		TestGame.get().setScreen(OutGameScreen.get());
 	}
@@ -55,13 +55,13 @@ public class GameStateChangeEventListener {
 		
 		i = 0;
 		TestGame.get().universe.player = new BPlayer(TestGame.get(), new Vector3(-2, i, 0));
-		TestGame.get().universe.player.publishThreaded(false);
+		TestGame.get().universe.player.publish(false);
 		
 		GClientServer.get().getClientList().stream().filter(c -> c.state == ClientState.PLAYING).forEach(client -> {
 			i += 2;
 			client.player = new BPlayer(TestGame.get(), new Vector3(-2, i, 0));
 			client.player.client = client;
-			client.player.publishThreaded(false);
+			client.player.publish(false);
 		});
 
 		GameClientPackets.ENTITY_LIST.broadcast(GClientServer.get().getSessionList(), GameGame.get().universe.instances);

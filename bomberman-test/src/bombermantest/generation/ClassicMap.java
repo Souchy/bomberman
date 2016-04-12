@@ -28,20 +28,20 @@ public class ClassicMap implements Generator {
 				// Plancher
 				UnbreakableBlock floor = new UnbreakableBlock(game, new Vector3(x, y, -1), "tilewhite1");
 				floor.setColor(white);
-				floor.publishThreaded(usePostRunnable);
+				floor.publish(usePostRunnable);
 				map.add(floor);
 				
 				// Obstacles
 				if(y % 2 == 0 && x % 2 == 0){
 					UnbreakableBlock wall = new UnbreakableBlock(game, new Vector3(x, y, 0), "tilewhite1"); //UnbreakableBlock.getModelName());
 					wall.setColor(gray);
-					wall.publishThreaded(usePostRunnable);
+					wall.publish(usePostRunnable);
 					map.add(wall);
 				}
 				else if (AConstants.rnd.nextBoolean()){
 					Crate crate = new Crate(game, new Vector3(x, y, 0));
 					//crate.setColor(brown); déjà fait dans le constructeur de Crate
-					crate.publishThreaded(usePostRunnable); 
+					crate.publish(usePostRunnable); 
 					map.add(crate);
 				}
 			}
@@ -49,12 +49,12 @@ public class ClassicMap implements Generator {
 
 		UnbreakableBlock floor1 = new UnbreakableBlock(game, new Vector3(0, -10, -1), "tilewhite1");
 		floor1.setColor(white);
-		floor1.publishThreaded(usePostRunnable);
+		floor1.publish(usePostRunnable);
 		map.add(floor1);
 
 		UnbreakableBlock floor2 = new UnbreakableBlock(game, new Vector3(10, -10, -1), "tilewhite1");
 		floor2.setColor(white);
-		floor2.publishThreaded(usePostRunnable);
+		floor2.publish(usePostRunnable);
 		map.add(floor2);
 		
 		return map;

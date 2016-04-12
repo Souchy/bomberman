@@ -44,7 +44,7 @@ public class Crate extends Block2d {
 			
 			if(AConstants.rnd.nextInt(3) == 0 && AGame.platform == Platform.Server){
 				Booster booster = new Booster(game, getGfxPos(), BuffType.randomBuffType());
-				booster.publishThreaded(true);
+				booster.publish();
 				CrateDropEvent.post(booster);
 			}
 			

@@ -12,7 +12,7 @@ public class BombPlacer extends Weapon {
 	@Override
 	public void attack(AGame g, Vector2 initPos, Vector2 uDir, EntityStats weaponHolderStats) {
 		NormalBomb bomb = new NormalBomb(g, initPos, weaponHolderStats);
-		bomb.publishThreaded(true);
+		bomb.publish();
 	}
 	
 	@Override
