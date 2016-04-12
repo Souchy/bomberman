@@ -33,6 +33,9 @@ public class OutGameScreen extends Screen3d {
 		test = new MyLabel("OutGameScreen here gamestate=["+GameState.state+"]", FontsLoader.singleton.hongkong, Color.WHITE, 20);
 		test.setPosition(30, 30);
 		hud.addActor(test);
+		
+		// Add the chatbox Hud
+		hud.getActors().addAll(AChatHud.get().hud.getActors());
 	}
 	
 	@Override
@@ -46,7 +49,7 @@ public class OutGameScreen extends Screen3d {
 		ScoreboardScreen.get().drawHud(delta);
 		
 		// Draw the chatbox Hud
-		AChatHud.get().drawHud(delta);
+		//AChatHud.get().drawHud(delta);
 		
 		test.setText("OutGameScreen here gamestate=["+GameState.state+"]");
 	}

@@ -1,5 +1,6 @@
 package bombermantest.ui.game;
 
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
@@ -30,7 +31,6 @@ public abstract class AChatHud extends Screen3d {
 	protected VisTable table;
 	protected VisTextArea chatBox;
 	protected VisTextField textEntry;
-	protected MyLabel play;
 	
 	
 	@Override
@@ -91,11 +91,15 @@ public abstract class AChatHud extends Screen3d {
 		textEntry.setText("");
 		textEntry.setMessageText("allo test textEntry");
 		textEntry.addListener(new InputListener(){
+			
 			@Override
 			public boolean keyDown(InputEvent event, int keycode) {
 				if(keycode == getFocusChatKey()){
 					enterMessage(textEntry.getText());
 					textEntry.setText("");
+				}
+				if(keycode == Keys.ESCAPE){
+					// redonne le focus au screen contenant l'UI
 				}
 				return super.keyDown(event, keycode);
 			}
@@ -122,8 +126,11 @@ public abstract class AChatHud extends Screen3d {
 		chatBox.appendText(text + "\n");
 	}
 
-	
 	@Override public void preDrawHook(float delta) { }
+
+	@Override public void draw(float delta) { super.draw(delta); }
+	
+	@Override public void drawHud(float delta) { super.drawHud(delta); }
 	
 	@Override public void postDrawHook(float delta) { }
 	

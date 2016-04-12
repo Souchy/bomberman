@@ -80,42 +80,9 @@ public class GameScreen extends Screen3d {
         
         // Mouse (choosing target to spectate after dying)
         hud.addListener(new SpectatingClickListener());
-		
-	}
-	
-	public void resetCamTarget(){
-		if(TestGame.get().getClientState() == ClientState.PLAYING) {
-       		camTarget = TestGame.get().universe.player;
-       	} else {
-       		TestGame.get().getClientList().stream()
-       				.filter(c -> c.state == ClientState.PLAYING) // SI T'ES PLAYING, ÇA IMPLIQUE QUE T'AS UN BPLAYER ET QUE T'ES PAS MORT
-       				.filter(c -> c.player != null)
-       				.filter(c -> c.player.body != null) // il est ptete pas encore build() par contre
-       				.findFirst()
-       				.ifPresent(c -> camTarget = c.player);
-       		
-       		/*for(GClient target : TestGame.get().getClientList()){
-       			if(target.state == ClientState.PLAYING && target.player != null && target.player.body != null){
-    				camTarget = target.player;
-    			}
-    		}*/
-       	}
-       	
-		System.out.println("spectate = ["+GameScreen.get().camTarget+"], "
-				+ "body = ["+(GameScreen.get().camTarget != null ? GameScreen.get().camTarget.body : "null target")+"]");
-       	if(GameScreen.get().camTarget != null){
-       		if(GameScreen.get().camTarget instanceof BPlayer){
-       			BPlayer p = (BPlayer) GameScreen.get().camTarget;
-       			if(p.client != null){
-       				System.out.println("p.client = ["+p.client+"]");
-       				if(p.client.player != null){
-       					System.out.println("p.client.player.client = ["+p.client+"]");
-       				}
-       			}else{
-       				System.out.println("client null");
-       			}
-       		}
-       	}
+        
+		// Add the chatbox Hud
+		hud.getActors().addAll(AChatHud.get().hud.getActors());
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -186,12 +153,10 @@ public class GameScreen extends Screen3d {
 		}
 		
 		// Draw the chatbox Hud
-		AChatHud.get().drawHud(delta);
-		
+		//AChatHud.get().drawHud(delta);
 	}
 	
 	private void updateCam(float delta){
-
 		Vector3 pos = new Vector3(camTarget.getPos(), 0);
 		Vector2 vel = camTarget.body.getLinearVelocity();
 		// Update cam control
@@ -224,4 +189,34 @@ public class GameScreen extends Screen3d {
 		});
 	}
 
+
+	public void resetCamTarget(){
+		if(TestGame.get().getClientState() == ClientState.PLAYING) {
+       		camTarget = TestGame.get().universe.player;
+       	} else {
+       		TestGame.get().getClientList().stream()
+       				.filter(c -> c.state == ClientState.PLAYING) // SI T'ES PLAYING, ÇA IMPLIQUE QUE T'AS UN BPLAYER ET QUE T'ES PAS MORT
+       				.filter(c -> c.player != null)
+       				.filter(c -> c.player.body != null) // il est ptete pas encore build() par contre
+       				.findFirst()
+       				.ifPresent(c -> camTarget = c.player);
+       	}
+       	
+		System.out.println("spectate = ["+GameScreen.get().camTarget+"], "
+				+ "body = ["+(GameScreen.get().camTarget != null ? GameScreen.get().camTarget.body : "null target")+"]");
+       	if(GameScreen.get().camTarget != null){
+       		if(GameScreen.get().camTarget instanceof BPlayer){
+       			BPlayer p = (BPlayer) GameScreen.get().camTarget;
+       			if(p.client != null){
+       				System.out.println("p.client = ["+p.client+"]");
+       				if(p.client.player != null){
+       					System.out.println("p.client.player.client = ["+p.client+"]");
+       				}
+       			}else{
+       				System.out.println("client null");
+       			}
+       		}
+       	}
+	}
+	
 }

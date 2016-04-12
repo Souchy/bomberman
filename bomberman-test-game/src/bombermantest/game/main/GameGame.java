@@ -52,12 +52,12 @@ public class GameGame extends TestGame {
 		//Generation.Classic.generate(this); 
 		//universe.player = new BPlayer(this, new Vector3(0, 3, 0));
 		//universe.player.prePublish();
-		
+
+		ChatHud.get();
+		StatusHud.get();
 		OutGameScreen.get();
 		PreparingGameScreen.get();
 		GameScreen.get();
-		StatusHud.get();
-		ChatHud.get();
 		
 		setScreen(OutGameScreen.get());
 	}

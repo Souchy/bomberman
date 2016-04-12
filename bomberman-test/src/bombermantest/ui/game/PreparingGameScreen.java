@@ -41,6 +41,9 @@ public class PreparingGameScreen extends Screen3d {
 		test = new MyLabel("PreparingGameScreen here gamestate=["+GameState.state+"]", FontsLoader.singleton.hongkong, Color.WHITE, 20);
 		test.setPosition(30, 30);
 		hud.addActor(test);
+		
+		// Add the chatbox Hud -> no cuz its already drawn via the GameScreen.get().drawHud(delta); below
+		//hud.getActors().addAll(AChatHud.get().hud.getActors());
 	}
 	
 	@Override
@@ -62,8 +65,8 @@ public class PreparingGameScreen extends Screen3d {
 		// affiche l'écran de score par dessus le reste
 		ScoreboardScreen.get().drawHud(delta);
 		
-		// Draw the chatbox Hud
-		AChatHud.get().drawHud(delta);
+		// Draw the chatbox Hud -> no cuz its already drawn via the GameScreen.get().drawHud(delta); 
+		//AChatHud.get().drawHud(delta);
 		
 		test.setText("PreparingGameScreen here gamestate=["+GameState.state+"]");
 	}
