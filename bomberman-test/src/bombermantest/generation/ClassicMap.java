@@ -21,7 +21,7 @@ public class ClassicMap implements Generator {
 		
 		ColorAttribute white = new ColorAttribute(ColorAttribute.Diffuse, Color.WHITE);
 		ColorAttribute gray = new ColorAttribute(ColorAttribute.Diffuse, Color.GRAY);
-		ColorAttribute black = new ColorAttribute(ColorAttribute.Diffuse, Color.BLACK);
+		//ColorAttribute black = new ColorAttribute(ColorAttribute.Diffuse, Color.BLACK);
 		
 		for(int y = 0; y < mapWidth; y++){
 			for(int x = 0; x < mapWidth; x++){

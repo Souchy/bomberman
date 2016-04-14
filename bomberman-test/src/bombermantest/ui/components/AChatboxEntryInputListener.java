@@ -1,13 +1,7 @@
 package bombermantest.ui.components;
 
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.kotcrab.vis.ui.FocusManager;
-import com.kotcrab.vis.ui.widget.VisTextField;
-
-import bombermantest.main.TestGame;
-import bombermantest.ui.game.GameScreen;
 
 public abstract class AChatboxEntryInputListener extends InputListener {
 	

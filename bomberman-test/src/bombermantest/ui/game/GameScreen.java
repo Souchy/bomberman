@@ -10,14 +10,12 @@ import com.badlogic.gdx.graphics.g3d.ModelBatch;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.particles.ParticleSystem;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.google.common.eventbus.Subscribe;
-import com.kotcrab.vis.ui.widget.VisTextField;
 import com.mygdx.engine.actors.MyLabel;
 import com.mygdx.engine.configs.Test;
 import com.mygdx.engine.game.Universe;
@@ -34,9 +32,12 @@ import bombermantest.ui.components.AChatboxEntryInputListener;
 import bombermantest.ui.components.ChatboxArea;
 import bombermantest.ui.components.ChatboxEntry;
 
+@SuppressWarnings("rawtypes")
 public class GameScreen extends Screen3d {
 
 	private static GameScreen singleton;
+	
+	@SuppressWarnings("unchecked")
 	public static GameScreen get(){
 		if(singleton == null){
 			singleton = new GameScreen(); 
@@ -117,7 +118,6 @@ public class GameScreen extends Screen3d {
 
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void preDrawHook(float delta) {
 		long currentTime = System.currentTimeMillis();
@@ -190,7 +190,8 @@ public class GameScreen extends Screen3d {
 	
 	private void updateCam(float delta){
 		Vector3 pos = new Vector3(camTarget.getPos(), 0);
-		Vector2 vel = camTarget.body.getLinearVelocity();
+		//Vector2 vel = camTarget.body.getLinearVelocity();
+		
 		// Update cam control
 		//Gdx.input.setInputProcessor(null);
 		//cam.position.x = 0;

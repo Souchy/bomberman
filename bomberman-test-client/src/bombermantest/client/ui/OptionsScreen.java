@@ -13,9 +13,12 @@ import com.mygdx.engine.services.FontsLoader;
 import bombermantest.client.main.ClientGame;
 import bombermantest.client.ui.login.LoginScreen;
 
+@SuppressWarnings("rawtypes")
 public class OptionsScreen extends Screen3d {
 
 	private static OptionsScreen singleton;
+	
+	@SuppressWarnings("unchecked")
 	public static OptionsScreen get(){
 		if(singleton == null){
 			singleton = new OptionsScreen(); 

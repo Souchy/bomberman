@@ -14,6 +14,7 @@ public class ServerSelectionResultParser implements Parser {
 	public void parse(IoSession session, IoBuffer buf) {
 		try {
 			byte accepted = buf.get();
+			@SuppressWarnings("unused") 
 			long serverID = buf.getLong();
 			String ip = buf.getPrefixedString(decoder);
 			short port = (short) buf.getInt();

@@ -19,9 +19,12 @@ import bombermantest.client.network.client.game.CGame;
 import bombermantest.client.network.client.login.LoginClient;
 import bombermantest.network.packets.enums.LoginClientPackets;
 
+@SuppressWarnings("rawtypes")
 public class GameServerListScreen extends Screen3d {
 
 	private static GameServerListScreen singleton;
+	
+	@SuppressWarnings("unchecked")
 	public static GameServerListScreen get(){
 		if(singleton == null){
 			singleton = new GameServerListScreen(); 

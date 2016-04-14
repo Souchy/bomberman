@@ -1,6 +1,5 @@
 package bombermantest.ui.components;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.kotcrab.vis.ui.widget.VisTextField;
 

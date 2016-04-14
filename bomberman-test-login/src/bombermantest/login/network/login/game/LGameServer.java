@@ -19,7 +19,7 @@ public class LGameServer extends MinaServer {
 	
 	private LGameServer(){
 		super();
-		this.BOTH_IDLE_TIME = 15 * 60; // 15 min d'idle
+		BOTH_IDLE_TIME = 15 * 60; // 15 min d'idle
 		setPort((short) 667);
 		codec = new ProtocolCodecFilter(new zEncoder(), new zDecoder());
 	}

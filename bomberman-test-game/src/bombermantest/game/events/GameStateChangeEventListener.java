@@ -23,7 +23,7 @@ public class GameStateChangeEventListener {
 
 	@Subscribe 
 	public void listen(GameStateChangeEvent event){
-		GameState before = event.getBefore();
+		//GameState before = event.getBefore();
 		GameState after = event.getAfter();
 		
 		GameState.change(after);

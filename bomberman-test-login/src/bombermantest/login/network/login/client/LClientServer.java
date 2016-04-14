@@ -19,7 +19,7 @@ public class LClientServer extends MinaServer {
 	
 	private LClientServer(){
 		super();
-		this.BOTH_IDLE_TIME = 15 * 60; // 15 min d'idle
+		BOTH_IDLE_TIME = 15 * 60; // 15 min d'idle
 		setPort((short) 666);
 		codec = new ProtocolCodecFilter(new zEncoder(), new zDecoder());
 	}

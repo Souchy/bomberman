@@ -20,7 +20,7 @@ public class LoginClient extends MinaClient {
 
 	public LoginClient(){//MinaHandler handler){
 		super();
-		this.BOTH_IDLE_TIME = 15 * 60; // 15 min d'idle
+		BOTH_IDLE_TIME = 15 * 60; // 15 min d'idle
 		setIp("127.0.0.1");
 		setPort((short) 666);
 		//setHandler(handler);

@@ -18,7 +18,6 @@ import bombermantest.configs.Constants;
 import bombermantest.enums.ClientState;
 import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;
-import bombermantest.ui.components.AChatboxEntryInputListener;
 import bombermantest.ui.components.ChatboxArea;
 import bombermantest.ui.components.ChatboxEntry;
 import bombermantest.ui.game.GameScreen;

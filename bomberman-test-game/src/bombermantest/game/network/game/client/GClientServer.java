@@ -26,7 +26,7 @@ public class GClientServer extends MinaServer {
 	
 	private GClientServer(){
 		super();
-		this.BOTH_IDLE_TIME = 15 * 60; // 15 min d'idle
+		BOTH_IDLE_TIME = 15 * 60; // 15 min d'idle
 		setPort((short) 444);
 		codec = new ProtocolCodecFilter(new zEncoder(), new zDecoder());
 	}

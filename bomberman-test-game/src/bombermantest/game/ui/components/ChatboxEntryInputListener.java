@@ -1,10 +1,7 @@
 package bombermantest.game.ui.components;
 
 import com.badlogic.gdx.graphics.Color;
-import com.mygdx.engine.events.PlayerDeathEvent;
 
-import bombermantest.enums.ClientState;
-import bombermantest.enums.GameState;
 import bombermantest.game.main.testGameConfig;
 import bombermantest.game.network.game.client.GClientServer;
 import bombermantest.network.packets.enums.GameClientPackets;

@@ -7,9 +7,12 @@ import com.mygdx.engine.services.FontsLoader;
 
 import bombermantest.enums.GameState;
 
+@SuppressWarnings("rawtypes")
 public class PreparingGameScreen extends Screen3d {
 
 	private static PreparingGameScreen singleton;
+	
+	@SuppressWarnings("unchecked")
 	public static PreparingGameScreen get(){
 		if(singleton == null){
 			singleton = new PreparingGameScreen(); 
@@ -31,7 +34,7 @@ public class PreparingGameScreen extends Screen3d {
 	
 	@Override
 	public void postCreateHook() {
-		timerLabel = new MyLabel(Long.toString(GameState.state.timeRemaining() / 1000), FontsLoader.singleton.hongkong, Color.WHITE, 60);
+		timerLabel = new MyLabel(Long.toString(GameState.timeRemaining() / 1000), FontsLoader.singleton.hongkong, Color.WHITE, 60);
 		timerLabel.setPosition(getPlayCamWidth()/2 - timerLabel.getWidth()/2, getPlayCamHeight()/2 - timerLabel.getHeight()/2);
 		timerLabel.pack();
 		hud.addActor(timerLabel);
@@ -48,7 +51,7 @@ public class PreparingGameScreen extends Screen3d {
 	
 	@Override
 	public void preDrawHook(float delta) {
-		timerLabel.setText(Long.toString(GameState.state.timeRemaining() / 1000));
+		timerLabel.setText(Long.toString(GameState.timeRemaining() / 1000));
 		
    		if(GameScreen.get().camTarget == null) 
    			GameScreen.get().resetCamTarget();

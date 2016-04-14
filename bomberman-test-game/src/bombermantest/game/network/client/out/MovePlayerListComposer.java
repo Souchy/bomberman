@@ -16,6 +16,7 @@ public class MovePlayerListComposer implements Composer {
 
 	@Override
 	public IoBuffer compose(IoBuffer buf, IoSession session, Object... objects) {
+		@SuppressWarnings("unchecked")
 		Collection<GClient> clients = (Collection<GClient>) objects[0];
 		
 		int nb = (int) clients.stream().filter(c -> c.state == ClientState.PLAYING).count();

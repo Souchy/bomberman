@@ -1,28 +1,24 @@
 package bombermantest.ui.game;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Pixmap.Format;
-import com.badlogic.gdx.scenes.scene2d.ui.Cell;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
 import com.kotcrab.vis.ui.widget.VisTable;
-import com.kotcrab.vis.ui.widget.VisTextField.VisTextFieldStyle;
-import com.mygdx.engine.configs.AConstants;
 import com.mygdx.engine.screens.Screen3d;
 
 import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;
 import bombermantest.ui.components.ScoreLine;
 
+@SuppressWarnings("rawtypes")
 public class ScoreboardScreen extends Screen3d {
 
 	private static ScoreboardScreen singleton;
+	
+	@SuppressWarnings("unchecked")
 	public static ScoreboardScreen get(){
 		if(singleton == null){
 			singleton = new ScoreboardScreen(); 

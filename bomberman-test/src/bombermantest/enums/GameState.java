@@ -10,23 +10,23 @@ public enum GameState {
 	public static GameState state = OUTGAME;
 	public static long timer;
 	
-	public long duration;
+	private long duration;
 	
 	private GameState(long milliseconds){
 		duration = milliseconds;
 	}
 	
-	public void startTimer(){
+	public static void startTimer(){
 		timer = System.currentTimeMillis();
 	}
 	
-	public long timeRemaining(){
-		return duration - (System.currentTimeMillis() - timer);
+	public static long timeRemaining(){
+		return state.duration - (System.currentTimeMillis() - timer);
 	}
 	
 	public static void change(GameState next){
 		state = next;
-		state.startTimer();
+		startTimer();
 	}
 	
 	public GameState getNext(){

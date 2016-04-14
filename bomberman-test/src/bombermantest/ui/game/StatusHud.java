@@ -14,9 +14,12 @@ import bombermantest.main.TestGame;
 import bombermantest.objects.characters.playables.BPlayer;
 import bombermantest.objects.characters.playables.BombermanStats;
 
+@SuppressWarnings("rawtypes")
 public class StatusHud extends Screen3d {
 
 	private static StatusHud singleton;
+	
+	@SuppressWarnings("unchecked")
 	public static StatusHud get(){
 		if(singleton == null){
 			singleton = new StatusHud(); 

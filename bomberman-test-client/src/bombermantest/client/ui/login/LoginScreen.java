@@ -17,9 +17,12 @@ import bombermantest.client.main.testClientConfig;
 import bombermantest.client.network.client.login.LoginClient;
 import bombermantest.client.ui.OptionsScreen;
 
+@SuppressWarnings("rawtypes")
 public class LoginScreen extends Screen3d  {
 
 	private static LoginScreen singleton;
+	
+	@SuppressWarnings("unchecked")
 	public static LoginScreen get(){
 		if(singleton == null){
 			singleton = new LoginScreen(); 
