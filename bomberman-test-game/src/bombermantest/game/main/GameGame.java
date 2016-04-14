@@ -76,7 +76,7 @@ public class GameGame extends TestGame {
 			GameClientPackets.MOVE_PLAYER_LIST.broadcast(GClientServer.get().getSessionList(), TestGame.get().getClientList());
 		}
 		
-		if(GameState.state != GameState.INGAME && GameState.state.timeRemaining() <= 0 && GClientServer.get().getClientCount() > 0){
+		if(GameState.state != GameState.INGAME && GameState.timeRemaining() <= 0 && GClientServer.get().getClientCount() > 0){
 			System.out.println("gamegame.render -> change screen");
 			GameStateChangeEvent.post(GameState.state, GameState.state.getNext());
 		}
