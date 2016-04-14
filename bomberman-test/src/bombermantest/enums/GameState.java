@@ -16,17 +16,17 @@ public enum GameState {
 		duration = milliseconds;
 	}
 	
-	public static long timeRemaining(){
-		return state.duration - (System.currentTimeMillis() - timer);
+	public void startTimer(){
+		timer = System.currentTimeMillis();
 	}
 	
-	public static void startTimer(){
-		timer = System.currentTimeMillis();
+	public long timeRemaining(){
+		return duration - (System.currentTimeMillis() - timer);
 	}
 	
 	public static void change(GameState next){
 		state = next;
-		startTimer();
+		state.startTimer();
 	}
 	
 	public GameState getNext(){
