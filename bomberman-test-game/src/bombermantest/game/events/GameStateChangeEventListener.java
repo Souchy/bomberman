@@ -44,7 +44,7 @@ public class GameStateChangeEventListener {
 		// met tout le monde à jouer
 		TestGame.get().getClientList().forEach(c -> c.state = ClientState.PLAYING);
 		// vide les anciennes instances du monde 
-		TestGame.get().universe.instances.forEach(c -> c.dispose(false));
+		TestGame.get().universe.instances.forEach(c -> c.dispose(true));
 		
 		TestGame.get().setScreen(OutGameScreen.get());
 	}

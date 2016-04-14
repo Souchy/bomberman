@@ -13,8 +13,11 @@ import com.badlogic.gdx.graphics.g3d.particles.ParticleSystem;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.google.common.eventbus.Subscribe;
+import com.kotcrab.vis.ui.widget.VisTextField;
 import com.mygdx.engine.actors.MyLabel;
 import com.mygdx.engine.configs.Test;
 import com.mygdx.engine.game.Universe;
@@ -27,6 +30,9 @@ import bombermantest.events.SpectatingClickListener;
 import bombermantest.events.TextPopupEvent;
 import bombermantest.main.TestGame;
 import bombermantest.objects.characters.playables.BPlayer;
+import bombermantest.ui.components.AChatboxEntryInputListener;
+import bombermantest.ui.components.ChatboxArea;
+import bombermantest.ui.components.ChatboxEntry;
 
 public class GameScreen extends Screen3d {
 
@@ -44,7 +50,8 @@ public class GameScreen extends Screen3d {
 	private Environment environment;
 	public Box2dObject camTarget; 
     public int visibleCount;
-	
+
+	//protected VisTextField textEntry;
 
 	@Override
 	public void show() {
@@ -69,20 +76,45 @@ public class GameScreen extends Screen3d {
 		//setupHud();
 		
 		// Keyboard
-        /*hud.addListener(new InputListener() {
+        hud.addListener(new InputListener() {
 			@Override
 			public boolean keyDown(InputEvent event, int keycode) {
 				//if (Gdx.input.isKeyPressed(Keys.ESCAPE)) game.setScreen(PauseScreen.get());
-				if (Gdx.input.isKeyPressed(Keys.TAB)) game.setScreen(ScoreboardScreen.get());
+				//if (Gdx.input.isKeyPressed(Keys.TAB)) game.setScreen(ScoreboardScreen.get());
+				if (Gdx.input.isKeyPressed(AChatboxEntryInputListener.get().getFocusChatKey()) && ChatboxEntry.focused == false) {
+					System.out.println("enter focus");
+					ChatboxEntry.get().focusField();
+				}else
+				if((Gdx.input.isKeyPressed(AChatboxEntryInputListener.get().getFocusChatKey()) || Gdx.input.isKeyPressed(Keys.ESCAPE)) && ChatboxEntry.focused == true){
+					// redonne le focus au screen contenant l'UI
+					System.out.println("enter UN-focus");
+					ChatboxEntry.get().setText("");
+					GameScreen.get().hud.unfocus(ChatboxEntry.get());
+					ChatboxEntry.get().focusLost();
+				}
 				return false;
 			}
-		});*/
+		});
         
         // Mouse (choosing target to spectate after dying)
         hud.addListener(new SpectatingClickListener());
         
+        
 		// Add the chatbox Hud
-		hud.getActors().addAll(AChatHud.get().hud.getActors());
+		//hud.getActors().addAll(AChatHud.get().hud.getActors());
+        
+        hud.addActor(ChatboxEntry.get());
+        hud.addActor(ChatboxArea.get());
+        
+		/*// TextEntry field
+		textEntry = new VisTextField();
+		textEntry.setText("");
+		textEntry.setMessageText("allo test textEntry");
+		textEntry.addListener(new InputListener());
+		textEntry.setPosition(getHudCamWidth() - 300, 200);
+		textEntry.pack();
+		hud.addActor(textEntry);*/
+
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -185,7 +217,7 @@ public class GameScreen extends Screen3d {
 			hud.addActor(popup);
 			popup.addAction(Actions.sequence(Actions.alpha(0.0f), Actions.fadeIn(0.3f), Actions.delay(0.6f), Actions.fadeOut(0.3f), Actions.removeActor()));
 			
-			AChatHud.get().addMessage(event.getText());
+			ChatboxArea.get().addMessage(event.getText());
 		});
 	}
 

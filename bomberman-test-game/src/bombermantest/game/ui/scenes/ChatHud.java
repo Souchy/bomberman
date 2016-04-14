@@ -1,4 +1,4 @@
-package bombermantest.game.ui;
+package bombermantest.game.ui.scenes;
 
 import com.badlogic.gdx.graphics.Color;
 

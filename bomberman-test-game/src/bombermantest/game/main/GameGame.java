@@ -14,10 +14,12 @@ import bombermantest.enums.GameState;
 import bombermantest.events.GameStateChangeEvent;
 import bombermantest.game.network.game.client.GClientServer;
 import bombermantest.game.network.game.login.GLoginClient;
-import bombermantest.game.ui.ChatHud;
+import bombermantest.game.ui.components.ChatboxEntryInputListener;
 import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;
 import bombermantest.network.packets.enums.GameClientPackets;
+import bombermantest.ui.components.ChatboxArea;
+import bombermantest.ui.components.ChatboxEntry;
 import bombermantest.ui.game.GameScreen;
 import bombermantest.ui.game.OutGameScreen;
 import bombermantest.ui.game.PreparingGameScreen;
@@ -53,7 +55,11 @@ public class GameGame extends TestGame {
 		//universe.player = new BPlayer(this, new Vector3(0, 3, 0));
 		//universe.player.prePublish();
 
-		ChatHud.get();
+		ChatboxEntryInputListener.get();
+		ChatboxArea.get();
+		ChatboxEntry.get();
+
+		//ChatHud.get();
 		StatusHud.get();
 		OutGameScreen.get();
 		PreparingGameScreen.get();
@@ -86,7 +92,7 @@ public class GameGame extends TestGame {
 		PreparingGameScreen.get().dispose();
 		GameScreen.get().dispose();
 		StatusHud.get().dispose();
-		ChatHud.get().dispose();
+		//ChatHud.get().dispose();
 		
 		GClientServer.get().off(true);
 		GLoginClient.get().off(true);

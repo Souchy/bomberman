@@ -11,13 +11,16 @@ import com.mygdx.engine.game.CollisionListenerBox2d;
 import bombermantest.client.network.client.game.GameClient;
 import bombermantest.client.network.client.login.LoginClient;
 import bombermantest.client.ui.OptionsScreen;
-import bombermantest.client.ui.game.ChatHud;
+import bombermantest.client.ui.components.ChatboxEntryInputListener;
 import bombermantest.client.ui.login.GameServerListScreen;
 import bombermantest.client.ui.login.LoginScreen;
 import bombermantest.configs.Constants;
 import bombermantest.enums.ClientState;
 import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;
+import bombermantest.ui.components.AChatboxEntryInputListener;
+import bombermantest.ui.components.ChatboxArea;
+import bombermantest.ui.components.ChatboxEntry;
 import bombermantest.ui.game.GameScreen;
 import bombermantest.ui.game.OutGameScreen;
 import bombermantest.ui.game.PreparingGameScreen;
@@ -51,11 +54,14 @@ public class ClientGame extends TestGame {
 		//universe.player = new CPlayer(this, new Vector3(0, 3, 0));
 		//universe.player.prePublish();
 		
+		ChatboxEntryInputListener.get();
+		ChatboxArea.get();
+		ChatboxEntry.get();
 		
 		LoginScreen.get();
 		OptionsScreen.get();
 		GameServerListScreen.get();
-		ChatHud.get();
+		//ChatHud.get();
 		StatusHud.get();
 		OutGameScreen.get();
 		PreparingGameScreen.get();
@@ -84,7 +90,7 @@ public class ClientGame extends TestGame {
 		PreparingGameScreen.get().dispose();
 		GameScreen.get().dispose();
 		StatusHud.get().dispose();
-		ChatHud.get().dispose();
+		//ChatHud.get().dispose();
 
 		//JsonLoader.singleton.saveJson(Settings.get());
 		

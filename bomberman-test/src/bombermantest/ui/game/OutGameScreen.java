@@ -6,6 +6,8 @@ import com.mygdx.engine.screens.Screen3d;
 import com.mygdx.engine.services.FontsLoader;
 
 import bombermantest.enums.GameState;
+import bombermantest.ui.components.ChatboxArea;
+import bombermantest.ui.components.ChatboxEntry;
 
 public class OutGameScreen extends Screen3d {
 
@@ -35,7 +37,9 @@ public class OutGameScreen extends Screen3d {
 		hud.addActor(test);
 		
 		// Add the chatbox Hud
-		hud.getActors().addAll(AChatHud.get().hud.getActors());
+		//hud.getActors().addAll(AChatHud.get().hud.getActors());
+        hud.addActor(ChatboxEntry.get());
+        hud.addActor(ChatboxArea.get());
 	}
 	
 	@Override

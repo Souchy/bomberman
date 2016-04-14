@@ -91,7 +91,6 @@ public abstract class AChatHud extends Screen3d {
 		textEntry.setText("");
 		textEntry.setMessageText("allo test textEntry");
 		textEntry.addListener(new InputListener(){
-			
 			@Override
 			public boolean keyDown(InputEvent event, int keycode) {
 				if(keycode == getFocusChatKey()){
@@ -138,6 +137,6 @@ public abstract class AChatHud extends Screen3d {
 	
 	protected abstract void enterCommand(String text);
 	
-	protected abstract int getFocusChatKey();
+	public abstract int getFocusChatKey();
 	
 }

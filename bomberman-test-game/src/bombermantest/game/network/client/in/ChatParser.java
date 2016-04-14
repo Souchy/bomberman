@@ -10,11 +10,11 @@ import org.apache.mina.core.session.IoSession;
 import com.badlogic.gdx.graphics.Color;
 
 import bombermantest.game.network.game.client.GClientServer;
-import bombermantest.game.ui.ChatHud;
 import bombermantest.network.handlers.ServerHandler;
 import bombermantest.network.objects.GClient;
 import bombermantest.network.packets.Parser;
 import bombermantest.network.packets.enums.GameClientPackets;
+import bombermantest.ui.components.ChatboxArea;
 
 public class ChatParser implements Parser {
 
@@ -29,10 +29,13 @@ public class ChatParser implements Parser {
 				sessions = GClientServer.get().getSessionList().stream()
 						   .filter(s -> ((GClient) s.getAttribute(ServerHandler.CLIENT_ATTR_KEY)).team == color).collect(Collectors.toList());
 			}
+			
+			// Envoie le message à tous les joueurs de la même couleur (team) sauf à celui qui a écrit le message
+			sessions.remove(session);
 			GameClientPackets.CHAT.broadcast(sessions, message, color);
 			
-			ChatHud.get().setColor(new Color(color));
-			ChatHud.get().addMessage(message);
+			ChatboxArea.get().setColor(new Color(color));
+			ChatboxArea.get().addMessage(message);
 			
 		} catch (CharacterCodingException e) {
 			e.printStackTrace();

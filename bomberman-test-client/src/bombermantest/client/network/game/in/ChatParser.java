@@ -7,8 +7,8 @@ import org.apache.mina.core.session.IoSession;
 
 import com.badlogic.gdx.graphics.Color;
 
-import bombermantest.client.ui.game.ChatHud;
 import bombermantest.network.packets.Parser;
+import bombermantest.ui.components.ChatboxArea;
 
 public class ChatParser implements Parser {
 
@@ -18,8 +18,8 @@ public class ChatParser implements Parser {
 			String message = buf.getPrefixedString(decoder);
 			int color = buf.getInt();
 			
-			ChatHud.get().setColor(new Color(color));
-			ChatHud.get().addMessage(message);
+			ChatboxArea.get().setColor(new Color(color));
+			ChatboxArea.get().addMessage(message);
 			
 		} catch (CharacterCodingException e) {
 			e.printStackTrace();
