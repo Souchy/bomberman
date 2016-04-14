@@ -9,9 +9,12 @@ import bombermantest.enums.GameState;
 import bombermantest.ui.components.ChatboxArea;
 import bombermantest.ui.components.ChatboxEntry;
 
+@SuppressWarnings("rawtypes")
 public class OutGameScreen extends Screen3d {
 
 	private static OutGameScreen singleton;
+	
+	@SuppressWarnings("unchecked")
 	public static OutGameScreen get(){
 		if(singleton == null){
 			singleton = new OutGameScreen(); 
@@ -25,14 +28,14 @@ public class OutGameScreen extends Screen3d {
 	
 	@Override
 	public void postCreateHook() {
-		timerLabel = new MyLabel(Long.toString(GameState.state.timeRemaining() / 1000), FontsLoader.singleton.hongkong, Color.WHITE, 60);
-		timerLabel.setPosition(getPlayCamWidth()/2 - timerLabel.getWidth()/2, getPlayCamHeight()/2 - timerLabel.getHeight()/2);
+		timerLabel = new MyLabel(Long.toString(GameState.timeRemaining() / 1000), FontsLoader.singleton.hongkong, Color.WHITE, 60);
 		timerLabel.pack();
+		timerLabel.setPosition(getHudCamWidth()/2 - timerLabel.getWidth()/2, getHudCamHeight() - timerLabel.getHeight() - 50);
 		hud.addActor(timerLabel);
 		
 		// TODO : OutGameScreen UI : chatbox
 		
-		test = new MyLabel("OutGameScreen here gamestate=["+GameState.state+"]", FontsLoader.singleton.hongkong, Color.WHITE, 20);
+		test = new MyLabel("", FontsLoader.singleton.hongkong, Color.WHITE, 20);
 		test.setPosition(30, 30);
 		hud.addActor(test);
 		
@@ -44,7 +47,7 @@ public class OutGameScreen extends Screen3d {
 	
 	@Override
 	public void preDrawHook(float delta) {
-		timerLabel.setText(Long.toString(GameState.state.timeRemaining() / 1000));
+		timerLabel.setText(Long.toString(GameState.timeRemaining() / 1000));
 	}
 	
 	@Override
@@ -55,7 +58,9 @@ public class OutGameScreen extends Screen3d {
 		// Draw the chatbox Hud
 		//AChatHud.get().drawHud(delta);
 		
-		test.setText("OutGameScreen here gamestate=["+GameState.state+"]");
+		test.setText("OutGameScreen here gamestate=["+GameState.state+"] gamestatetimer=["+GameState.timer+"]");
 	}
+	
+	
 
 }

@@ -26,7 +26,6 @@ public class GameStateChangeEventListener {
 		//GameState before = event.getBefore();
 		GameState after = event.getAfter();
 		
-		GameState.change(after);
 		
 		Gdx.app.postRunnable(() -> {
 			switch(after){
@@ -35,6 +34,8 @@ public class GameStateChangeEventListener {
 				case INGAME: onIngame(); break;
 			}
 		});
+
+		GameState.change(after);
 		
 		boolean onConnect = false;  // si c'est le premier GameStatePacket que le client recoit (quand il se connecte), ou si c'est un changement d'état subséquent.
 		GameClientPackets.GAME_STATE.broadcast(GClientServer.get().getSessionList(), onConnect);

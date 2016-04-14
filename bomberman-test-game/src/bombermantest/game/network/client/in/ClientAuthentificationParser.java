@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.Color;
 
 import bombermantest.enums.ClientState;
 import bombermantest.enums.GameState;
+import bombermantest.events.GameStateChangeEvent;
 import bombermantest.game.main.BombermanTestGame;
 import bombermantest.game.main.GameGame;
 import bombermantest.game.main.testGameConfig;
@@ -33,10 +34,12 @@ public class ClientAuthentificationParser implements Parser {
 		boolean onConnect = true;  // si c'est le premier GameStatePacket que le client recoit (quand il se connecte), ou si c'est un changement d'état subséquent.
 		
 		if(isFirstClient){
-			Gdx.app.postRunnable(() -> {
-				GameState.change(GameState.OUTGAME);
-				TestGame.get().setScreen(OutGameScreen.get());
-			});
+			//Gdx.app.postRunnable(() -> {
+				//GameState.change(GameState.OUTGAME);
+				//TestGame.get().setScreen(OutGameScreen.get());
+				
+				GameStateChangeEvent.post(GameState.state, GameState.OUTGAME);
+			//});
 		}
 		
 		try {

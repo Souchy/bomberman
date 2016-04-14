@@ -213,7 +213,7 @@ public class GameScreen extends Screen3d {
 			
 			MyLabel popup = new MyLabel(event.getText(), FontsLoader.singleton.hongkong, Color.WHITE, 50);
 			popup.setSize(popup.getPrefWidth(), popup.getPrefHeight());
-			popup.setPosition(getPlayCamWidth() / 2 - popup.getWidth() / 2, getPlayCamHeight() / 2 - popup.getHeight() / 2);
+			popup.setPosition(getHudCamWidth() / 2 - popup.getWidth() / 2, getHudCamWidth() / 2 - popup.getHeight() / 2);
 			
 			hud.addActor(popup);
 			popup.addAction(Actions.sequence(Actions.alpha(0.0f), Actions.fadeIn(0.3f), Actions.delay(0.6f), Actions.fadeOut(0.3f), Actions.removeActor()));

@@ -21,7 +21,8 @@ public enum GameState {
 	}
 	
 	public static long timeRemaining(){
-		return state.duration - (System.currentTimeMillis() - timer);
+		long time = state.duration - (System.currentTimeMillis() - timer);
+		return time <= 0 ? 0 : time;
 	}
 	
 	public static void change(GameState next){

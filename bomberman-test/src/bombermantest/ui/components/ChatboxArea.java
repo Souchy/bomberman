@@ -61,7 +61,7 @@ public class ChatboxArea extends VisTextArea {
 		setBounds(200, 200 + 25 + 10, 300, 150);
 		//pack();
 
-		addAction(Actions.alpha(0.2f, 0.3f));
+		addAction(Actions.alpha(0.2f));
 	}
 	
 	@Override 

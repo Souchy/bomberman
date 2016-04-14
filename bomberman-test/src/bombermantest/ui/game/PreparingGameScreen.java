@@ -35,13 +35,13 @@ public class PreparingGameScreen extends Screen3d {
 	@Override
 	public void postCreateHook() {
 		timerLabel = new MyLabel(Long.toString(GameState.timeRemaining() / 1000), FontsLoader.singleton.hongkong, Color.WHITE, 60);
-		timerLabel.setPosition(getPlayCamWidth()/2 - timerLabel.getWidth()/2, getPlayCamHeight()/2 - timerLabel.getHeight()/2);
 		timerLabel.pack();
+		timerLabel.setPosition(getHudCamWidth()/2 - timerLabel.getWidth()/2, getHudCamHeight() - timerLabel.getHeight() - 50);
 		hud.addActor(timerLabel);
 
 		// TODO : OutGameScreen UI : chatbox
 
-		test = new MyLabel("PreparingGameScreen here gamestate=["+GameState.state+"]", FontsLoader.singleton.hongkong, Color.WHITE, 20);
+		test = new MyLabel("", FontsLoader.singleton.hongkong, Color.WHITE, 20);
 		test.setPosition(30, 30);
 		hud.addActor(test);
 		
@@ -53,11 +53,8 @@ public class PreparingGameScreen extends Screen3d {
 	public void preDrawHook(float delta) {
 		timerLabel.setText(Long.toString(GameState.timeRemaining() / 1000));
 		
-   		if(GameScreen.get().camTarget == null) 
-   			GameScreen.get().resetCamTarget();
-   		else 
-   			// affiche l'écran de jeu en dessous de tout
-   			GameScreen.get().draw(delta);
+   		// affiche l'écran de jeu en dessous de tout
+   		GameScreen.get().draw(delta);
 	}
 	
 	@Override
@@ -71,7 +68,7 @@ public class PreparingGameScreen extends Screen3d {
 		// Draw the chatbox Hud -> no cuz its already drawn via the GameScreen.get().drawHud(delta); 
 		//AChatHud.get().drawHud(delta);
 		
-		test.setText("PreparingGameScreen here gamestate=["+GameState.state+"]");
+		test.setText("PreparingGameScreen here gamestate=["+GameState.state+"] gamestatetimer=["+GameState.timer+"]");
 	}
 	
 
