@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.kotcrab.vis.ui.widget.VisTextArea;
@@ -59,6 +60,8 @@ public class ChatboxArea extends VisTextArea {
 		
 		setBounds(200, 200 + 25 + 10, 300, 150);
 		//pack();
+
+		addAction(Actions.alpha(0.2f, 0.3f));
 	}
 	
 	@Override 
