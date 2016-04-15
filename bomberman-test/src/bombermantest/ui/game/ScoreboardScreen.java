@@ -90,8 +90,6 @@ public class ScoreboardScreen extends Screen3d {
 		TestGame.get().getClientList().forEach(c -> add(c));
 		table.setPosition(getHudCamWidth() / 2 - table.getWidth() / 2, getHudCamHeight() / 2 - table.getHeight() / 2);
 	}
-
-	
 	
 	public void clearList() {
 		table.clear();
@@ -103,26 +101,6 @@ public class ScoreboardScreen extends Screen3d {
 	}
 	
 	public void add(GClient client) {
-		/*List<Cell<Label>> row = new ArrayList<>();
-		
-		table.row();
-        
-		row.add(table.add(client.name));
-		row.add(table.add(Integer.toString(client.wins)));
-		row.add(table.add(Integer.toString(client.kills)));
-		row.add(table.add(Integer.toString(client.deaths)));
-		row.add(table.add(client.state.name()));
-		
-		table.row();
-		
-		row.forEach(c -> {
-			c.getActor().addListener(AConstants.hoverEffect);
-			c.getActor().setColor(textColor);
-			c.pad(pad);
-		});
-
-		table.pack();*/
-		
 		table.add(new ScoreLine(client));
 		table.row();
 		table.pack();
