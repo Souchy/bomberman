@@ -3,11 +3,10 @@ package bombermantest.ui.components;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Align;
 import com.kotcrab.vis.ui.widget.VisTable;
-import com.mygdx.engine.configs.AConstants;
 
 import bombermantest.network.objects.GClient;
 
@@ -16,7 +15,9 @@ public class ScoreLine extends VisTable {
 	//private static Skin skin = new Skin();
 	private static Pixmap pixmap = new Pixmap(1, 1, Format.RGBA8888);
 	private static Color textColor = Color.BLACK;
-	private static Color backColor = new Color(Color.CORAL.r, Color.CORAL.g, Color.CORAL.b, 0.8f); //Color.CORAL;
+	//private static Color backColor = new Color(Color.CORAL.r, Color.CORAL.g, Color.CORAL.b, 0.8f); //Color.CORAL;
+	private static Color backColor = new Color(112/255f, 122/255f, 135/255f, 1);
+	//private static Color backHoverColor = new Color(82/255f, 92/255f, 105/255f, 1);
 	private static int pad = 10;
 	
 	static {

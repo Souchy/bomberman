@@ -23,6 +23,7 @@ import bombermantest.ui.components.ChatboxEntry;
 import bombermantest.ui.game.GameScreen;
 import bombermantest.ui.game.OutGameScreen;
 import bombermantest.ui.game.PreparingGameScreen;
+import bombermantest.ui.game.Scoreboard;
 import bombermantest.ui.game.StatusHud;
 
 public class ClientGame extends TestGame {
@@ -56,12 +57,13 @@ public class ClientGame extends TestGame {
 		ChatboxEntryInputListener.get();
 		ChatboxArea.get();
 		ChatboxEntry.get();
+		Scoreboard.get();
+		StatusHud.get();
 		
 		LoginScreen.get();
 		OptionsScreen.get();
 		GameServerListScreen.get();
 		//ChatHud.get();
-		StatusHud.get();
 		OutGameScreen.get();
 		PreparingGameScreen.get();
 		GameScreen.get();

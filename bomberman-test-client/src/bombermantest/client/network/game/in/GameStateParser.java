@@ -14,7 +14,7 @@ import bombermantest.network.packets.Parser;
 import bombermantest.ui.game.GameScreen;
 import bombermantest.ui.game.OutGameScreen;
 import bombermantest.ui.game.PreparingGameScreen;
-import bombermantest.ui.game.ScoreboardScreen;
+import bombermantest.ui.game.Scoreboard;
 
 public class GameStateParser implements Parser {
 
@@ -49,7 +49,7 @@ public class GameStateParser implements Parser {
 				break;
 			}
 			
-			ScoreboardScreen.get().updateClientList(); 
+			Scoreboard.get().updateClientList(); 
 		});
 		
 		

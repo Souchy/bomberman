@@ -11,7 +11,7 @@ import bombermantest.enums.ClientState;
 import bombermantest.network.entities.EntityDecoder;
 import bombermantest.network.objects.GClient;
 import bombermantest.network.packets.Parser;
-import bombermantest.ui.game.ScoreboardScreen;
+import bombermantest.ui.game.Scoreboard;
 
 public class GClientDecoder implements EntityDecoder<GClient> {
 	
@@ -28,7 +28,7 @@ public class GClientDecoder implements EntityDecoder<GClient> {
 			client.team = buf.getInt();
 			
 			Gdx.app.postRunnable(() -> 
-				ScoreboardScreen.get().updateClientList()//.add(client)
+				Scoreboard.get().updateClientList()//.add(client)
 			);
 			
 			

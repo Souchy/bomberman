@@ -8,7 +8,7 @@ import bombermantest.enums.ClientState;
 import bombermantest.enums.GameState;
 import bombermantest.main.TestGame;
 import bombermantest.objects.characters.playables.BombermanStats;
-import bombermantest.ui.game.ScoreboardScreen;
+import bombermantest.ui.game.Scoreboard;
 
 public class PlayerDeathEventListener {
 	
@@ -37,7 +37,7 @@ public class PlayerDeathEventListener {
 		deadStats.player.client.deaths++;
 		deadStats.player.client.state = ClientState.SPECTATING;
 		
-		ScoreboardScreen.get().updateClientList(); 
+		Scoreboard.get().updateClientList(); 
 		
 		long playingCount = TestGame.get().getClientList().stream().filter(c -> c.state == ClientState.PLAYING).count();
 		if(playingCount == 0){

@@ -59,6 +59,12 @@ public class GameScreen extends Screen3d {
 		super.show();
 		resetCamTarget();
         System.out.println("GameScreen.show, camtarget = ["+GameScreen.get().camTarget+"]");
+
+		// Add the Chatbox and Scoreboard huds
+        hud.addActor(ChatboxEntry.get());
+        hud.addActor(ChatboxArea.get());
+        hud.addActor(Scoreboard.get());
+        Scoreboard.get().setVisible(false);
 	}
 	
 	@Override
@@ -82,40 +88,34 @@ public class GameScreen extends Screen3d {
 			public boolean keyDown(InputEvent event, int keycode) {
 				//if (Gdx.input.isKeyPressed(Keys.ESCAPE)) game.setScreen(PauseScreen.get());
 				//if (Gdx.input.isKeyPressed(Keys.TAB)) game.setScreen(ScoreboardScreen.get());
-				if (Gdx.input.isKeyPressed(AChatboxEntryInputListener.get().getFocusChatKey()) && ChatboxEntry.focused == false) {
+				if(ChatboxEntry.focused == false && keycode == AChatboxEntryInputListener.get().getFocusChatKey()) {
 					System.out.println("enter focus");
 					ChatboxEntry.get().focusField();
 				}else
-				if((Gdx.input.isKeyPressed(AChatboxEntryInputListener.get().getFocusChatKey()) || Gdx.input.isKeyPressed(Keys.ESCAPE)) && ChatboxEntry.focused == true){
+				if(ChatboxEntry.focused == true  && (keycode == AChatboxEntryInputListener.get().getFocusChatKey() || keycode == Keys.ESCAPE)){
 					// redonne le focus au screen contenant l'UI
 					System.out.println("enter UN-focus");
 					ChatboxEntry.get().setText("");
 					GameScreen.get().hud.unfocus(ChatboxEntry.get());
 					ChatboxEntry.get().focusLost();
 				}
+				if(keycode == Keys.TAB){
+					Scoreboard.get().setVisible(true);
+				}
 				return false;
+			}
+			@Override
+			public boolean keyUp(InputEvent event, int keycode) {
+				if(keycode == Keys.TAB){
+					Scoreboard.get().setVisible(false);
+				}
+				return super.keyUp(event, keycode);
 			}
 		});
         
         // Mouse (choosing target to spectate after dying)
         hud.addListener(new SpectatingClickListener());
         
-        
-		// Add the chatbox Hud
-		//hud.getActors().addAll(AChatHud.get().hud.getActors());
-        
-        hud.addActor(ChatboxEntry.get());
-        hud.addActor(ChatboxArea.get());
-        
-		/*// TextEntry field
-		textEntry = new VisTextField();
-		textEntry.setText("");
-		textEntry.setMessageText("allo test textEntry");
-		textEntry.addListener(new InputListener());
-		textEntry.setPosition(getHudCamWidth() - 300, 200);
-		textEntry.pack();
-		hud.addActor(textEntry);*/
-
 	}
 	
 	@Override
@@ -178,11 +178,11 @@ public class GameScreen extends Screen3d {
 		StatusHud.get().drawHud(delta);
 		StatusHud.get().postDrawHook(delta);
 		
-		// Draw the scoreboard hud
+		/*// Draw the scoreboard hud
 		if(Gdx.input.isKeyPressed(Keys.TAB)){
 			// affiche l'écran de score par dessus le reste
 			ScoreboardScreen.get().drawHud(delta);
-		}
+		}*/
 		
 		// Draw the chatbox Hud
 		//AChatHud.get().drawHud(delta);
@@ -213,7 +213,7 @@ public class GameScreen extends Screen3d {
 			
 			MyLabel popup = new MyLabel(event.getText(), FontsLoader.singleton.hongkong, Color.WHITE, 50);
 			popup.setSize(popup.getPrefWidth(), popup.getPrefHeight());
-			popup.setPosition(getHudCamWidth() / 2 - popup.getWidth() / 2, getHudCamWidth() / 2 - popup.getHeight() / 2);
+			popup.setPosition(hud.getWidth() / 2 - popup.getWidth() / 2, hud.getHeight() / 2 - popup.getHeight() / 2);
 			
 			hud.addActor(popup);
 			popup.addAction(Actions.sequence(Actions.alpha(0.0f), Actions.fadeIn(0.3f), Actions.delay(0.6f), Actions.fadeOut(0.3f), Actions.removeActor()));

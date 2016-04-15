@@ -44,6 +44,10 @@ public class LoginScreen extends Screen3d  {
 	
 	@Override
 	public void postCreateHook() {
+		
+		setHudCamWidth(400);
+		setHudCamHeight(600);
+		
 		hud.setDebugAll(false);
 		// Login window
         //window = new VisWindow("", false);
@@ -155,27 +159,10 @@ public class LoginScreen extends Screen3d  {
 		LoginClient.get().on();
 	}
 
-	/**
-	 * Implémente ceci si tu veux changer la largeur de viewport prise pour créer la caméra du hud
-	 */
-	@Override
-	protected float getHudCamWidth(){
-		return 400;
-	}
-	
-	/**
-	 * Implémente ceci si tu veux changer la hauteur de viewport prise pour créer la caméra du hud
-	 */
-	@Override
-	protected float getHudCamHeight(){
-		return 600;
-	}
-
 	@Override
 	public void resize(int width, int height) {
 		super.resize(width, height);
 		
-
 		table.setPosition(hud.getWidth()/2 - table.getWidth()/2, hud.getHeight()/2 - table.getHeight()/2);
 		options.setPosition(hud.getWidth() - options.getWidth() - 10, hud.getHeight() - options.getHeight());
 	}

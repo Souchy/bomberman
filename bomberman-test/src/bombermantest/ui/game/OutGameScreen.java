@@ -27,10 +27,19 @@ public class OutGameScreen extends Screen3d {
 	public MyLabel test;
 	
 	@Override
+	public void show() {
+		super.show();
+		// Add the Chatbox and Scoreboard huds
+        hud.addActor(ChatboxEntry.get());
+        hud.addActor(ChatboxArea.get());
+        hud.addActor(Scoreboard.get());
+	}
+	
+	@Override
 	public void postCreateHook() {
 		timerLabel = new MyLabel(Long.toString(GameState.timeRemaining() / 1000), FontsLoader.singleton.hongkong, Color.WHITE, 60);
 		timerLabel.pack();
-		timerLabel.setPosition(getHudCamWidth()/2 - timerLabel.getWidth()/2, getHudCamHeight() - timerLabel.getHeight() - 50);
+		timerLabel.setPosition(hud.getWidth() / 2 - timerLabel.getWidth()/2, hud.getHeight() - timerLabel.getHeight() - 50);
 		hud.addActor(timerLabel);
 		
 		// TODO : OutGameScreen UI : chatbox
@@ -39,10 +48,6 @@ public class OutGameScreen extends Screen3d {
 		test.setPosition(30, 30);
 		hud.addActor(test);
 		
-		// Add the chatbox Hud
-		//hud.getActors().addAll(AChatHud.get().hud.getActors());
-        hud.addActor(ChatboxEntry.get());
-        hud.addActor(ChatboxArea.get());
 	}
 	
 	@Override
@@ -53,7 +58,7 @@ public class OutGameScreen extends Screen3d {
 	@Override
 	public void postDrawHook(float delta) {
 		// affiche l'écran de score par dessus le reste
-		ScoreboardScreen.get().drawHud(delta);
+		//ScoreboardScreen.get().drawHud(delta);
 		
 		// Draw the chatbox Hud
 		//AChatHud.get().drawHud(delta);

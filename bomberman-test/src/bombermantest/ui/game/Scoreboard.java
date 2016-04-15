@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
@@ -14,28 +15,28 @@ import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;
 import bombermantest.ui.components.ScoreLine;
 
-@SuppressWarnings("rawtypes")
-public class ScoreboardScreen extends Screen3d {
+public class Scoreboard extends VisTable { 
 
-	private static ScoreboardScreen singleton;
+	private static Scoreboard singleton;
 	
-	@SuppressWarnings("unchecked")
-	public static ScoreboardScreen get(){
-		if(singleton == null){
-			singleton = new ScoreboardScreen(); 
-			singleton.create(null);
-		}
+	public static Scoreboard get(){
+		if(singleton == null) singleton = new Scoreboard(); 
 		return singleton;
 	}
 	
-	private VisTable table;
 	private VisTable titleTable = new VisTable();
-	private Color textColor = Color.BLACK;
-	private Color backColor = new Color(Color.CYAN.r, Color.CYAN.g, Color.CYAN.b, 0.8f);
+	//private Color textColor = Color.BLACK;
+	//private Color backColor = new Color(Color.CYAN.r, Color.CYAN.g, Color.CYAN.b, 0.8f);
+	private Color textColor = Color.GRAY;
+	private Color backColor = new Color(47/255f, 47/255f, 47/255f, 1);
 	private int pad = 10;
 	
-	@Override
-	public void postCreateHook() {
+	/**
+	 * HACK
+	 */
+	private Stage hud = GameScreen.get().hud;
+	
+	private Scoreboard(){
 		//hud.setDebugAll(true);
 		
 		Skin skin = new Skin();
@@ -45,10 +46,6 @@ public class ScoreboardScreen extends Screen3d {
 		pixmap.fill();
 		skin.add("white", new Texture(pixmap));
 		
-		//Color charcoal = new Color(47/255f, 47/255f, 47/255f, 1);;
-		//Color bgcolor = charcoal;
-		//Color fontcolor = Color.WHITE;
-
 		titleTable.setBackground(skin.newDrawable("white", backColor));
 		titleTable.add("Name").width(250).padLeft(pad);
 		titleTable.add("Wins").width(70);
@@ -64,54 +61,32 @@ public class ScoreboardScreen extends Screen3d {
 		((Label)titleTable.getCells().first().getActor()).setAlignment(Align.left);
 		titleTable.pack();
 		
-        // Table
-		table = new VisTable(true);
 		//table.setBackground(skin.newDrawable("white", backColor));
-		table.pad(pad);
+		pad(pad);
 		
-		table.setPosition(getHudCamWidth() / 2 - table.getWidth() / 2, getHudCamHeight() / 2 - table.getHeight() / 2);
-		hud.addActor(table);
-		
+		setPosition(hud.getWidth() / 2 - getWidth() / 2, hud.getHeight() - getHeight() - 150);
 	}
-	
-	public void show(){
-		super.show();
-		updateClientList();
-	}
-	
-	@Override
-	public void preDrawHook(float delta) { }
-
-	@Override
-	public void postDrawHook(float delta) { }
 
 	public void updateClientList() {
 		clearList();
 		TestGame.get().getClientList().forEach(c -> add(c));
-		table.setPosition(getHudCamWidth() / 2 - table.getWidth() / 2, getHudCamHeight() / 2 - table.getHeight() / 2);
+		setPosition(hud.getWidth() / 2 - getWidth() / 2, hud.getHeight() - getHeight() - 150);
 	}
 	
 	public void clearList() {
-		table.clear();
+		clear();
 		
-		table.add(titleTable);
+		add(titleTable);
 		
-		table.row();
-		table.pack();
+		row();
+		pack();
 	}
 	
 	public void add(GClient client) {
-		table.add(new ScoreLine(client));
-		table.row();
-		table.pack();
+		add(new ScoreLine(client));
+		row();
+		pack();
 		
-	}
-	
-	@Override 
-	public void resize(int width, int height){ 
-		super.resize(width, height);
-		
-		table.setPosition(getHudCamWidth() / 2 - table.getWidth() / 2, getHudCamHeight() / 2 - table.getHeight() / 2);
 	}
 
 }

@@ -7,7 +7,6 @@ import java.nio.charset.CharacterCodingException;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 
 import bombermantest.enums.ClientState;
@@ -17,11 +16,9 @@ import bombermantest.game.main.BombermanTestGame;
 import bombermantest.game.main.GameGame;
 import bombermantest.game.main.testGameConfig;
 import bombermantest.game.network.game.client.GClientServer;
-import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;
 import bombermantest.network.packets.Parser;
 import bombermantest.network.packets.enums.GameClientPackets;
-import bombermantest.ui.game.OutGameScreen;
 
 public class ClientAuthentificationParser implements Parser {
 

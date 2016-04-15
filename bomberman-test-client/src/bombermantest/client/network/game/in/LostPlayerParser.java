@@ -8,7 +8,7 @@ import com.badlogic.gdx.Gdx;
 import bombermantest.client.network.client.game.GameClient;
 import bombermantest.network.objects.GClient;
 import bombermantest.network.packets.Parser;
-import bombermantest.ui.game.ScoreboardScreen;
+import bombermantest.ui.game.Scoreboard;
 
 public class LostPlayerParser implements Parser {
 
@@ -21,7 +21,7 @@ public class LostPlayerParser implements Parser {
 			GClient client = GameClient.clients.remove(sessionId);
 			client.dispose();
 			Gdx.app.postRunnable(() -> {
-				ScoreboardScreen.get().updateClientList(); 
+				Scoreboard.get().updateClientList(); 
 			});
 		}
 		
