@@ -17,6 +17,7 @@ import com.mygdx.engine.screens.Screen3d;
 import bombermantest.client.main.testClientConfig;
 import bombermantest.client.network.client.game.CGame;
 import bombermantest.client.network.client.login.LoginClient;
+import bombermantest.client.ui.components.GameServerListLine;
 import bombermantest.network.packets.enums.LoginClientPackets;
 
 @SuppressWarnings("rawtypes")
@@ -56,10 +57,14 @@ public class GameServerListScreen extends Screen3d {
 		table.pack();
 	}
 	
-	private boolean selectionListenerEnabled = true;
+	//private boolean selectionListenerEnabled = true;
 	
 	public void add(CGame server) {
-		InputListener listener = new InputListener(){
+		table.add(new GameServerListLine(server));
+		table.row();
+		table.pack();
+		
+		/*InputListener listener = new InputListener(){
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				if(selectionListenerEnabled){
 					if(server.hasPassword){
@@ -89,12 +94,13 @@ public class GameServerListScreen extends Screen3d {
 		table.pack();
 		
 		row.forEach(c -> c.getActor().addListener(listener));
-		row.forEach(c -> c.getActor().addListener(AConstants.hoverEffect));
+		row.forEach(c -> c.getActor().addListener(AConstants.hoverEffect));*/
 	}
+	
 	
 
 	
-	private void popup(long serverID){
+	/*private void popup(long serverID){
 		//Dialog pop = new Dialog("Enter password", new Skin());
 		float windowW = 400;
 		float windowH = 150;
@@ -141,7 +147,7 @@ public class GameServerListScreen extends Screen3d {
 		//pop.show(hud);
 		
 		hud.addActor(pop);
-	}
+	}*/
 
 	@Override
 	public void resize(int width, int height) {

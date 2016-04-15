@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
 import com.kotcrab.vis.ui.widget.VisTable;
@@ -30,8 +31,8 @@ public class ScoreboardScreen extends Screen3d {
 	private VisTable table;
 	private VisTable titleTable = new VisTable();
 	private Color textColor = Color.BLACK;
-	private Color backColor = Color.CYAN;
-	private int pad = 20;
+	private Color backColor = new Color(Color.CYAN.r, Color.CYAN.g, Color.CYAN.b, 0.8f);
+	private int pad = 10;
 	
 	@Override
 	public void postCreateHook() {
@@ -47,18 +48,21 @@ public class ScoreboardScreen extends Screen3d {
 		//Color charcoal = new Color(47/255f, 47/255f, 47/255f, 1);;
 		//Color bgcolor = charcoal;
 		//Color fontcolor = Color.WHITE;
-		
-		titleTable.add("Name").width(50);
-		titleTable.add("Wins").width(50);
-		titleTable.add("Kills").width(50);
-		titleTable.add("Deaths").width(50);
-		titleTable.add("State").width(50);
+
+		titleTable.setBackground(skin.newDrawable("white", backColor));
+		titleTable.add("Name").width(250).padLeft(pad);
+		titleTable.add("Wins").width(70);
+		titleTable.add("Kills").width(70);
+		titleTable.add("Deaths").width(70);
+		titleTable.add("State").width(90).padRight(pad);
 		titleTable.getCells().forEach(c -> {
 			c.getActor().setColor(textColor);
-			c.align(Align.center);
-			c.pad(pad);
+			c.padTop(pad);
+			c.padBottom(pad);
+			((Label)c.getActor()).setAlignment(Align.center);
 		});
-		titleTable.setBackground(skin.newDrawable("white", backColor));
+		((Label)titleTable.getCells().first().getActor()).setAlignment(Align.left);
+		titleTable.pack();
 		
         // Table
 		table = new VisTable(true);

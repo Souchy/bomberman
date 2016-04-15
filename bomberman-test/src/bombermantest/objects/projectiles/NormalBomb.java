@@ -35,7 +35,7 @@ public class NormalBomb extends Projectile {
 		super.update(delta);
 		if(timeRemaining <= 0){
 			BombermanStats stats = (BombermanStats) weaponHolderStats;
-			if(game.universe.player.getStats() == stats){
+			if(game.universe.player != null && game.universe.player.getStats() == stats){
 				stats.nbBombs += 1;
 			}
 			// explosion
