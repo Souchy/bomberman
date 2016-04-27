@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
 import com.kotcrab.vis.ui.widget.VisTable;
-import com.mygdx.engine.screens.Screen3d;
 
 import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;

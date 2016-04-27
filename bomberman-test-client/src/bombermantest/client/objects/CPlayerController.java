@@ -1,9 +1,5 @@
 package bombermantest.client.objects;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.engine.objects.weapons.Weapon;
 

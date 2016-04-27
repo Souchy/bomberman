@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector3;
 import com.mygdx.engine.configs.AConstants;
 import com.mygdx.engine.objects.items.scenery.wall.UnbreakableBlock;
-import com.mygdx.engine.services.ModelsLoader;
 
 import bombermantest.client.main.ClientGame;
 import bombermantest.network.entities.EntityDecoder;

@@ -1,5 +1,6 @@
 package bombermantest.client.main;
 
+import java.io.FileReader;
 import java.util.Collection;
 
 import com.badlogic.gdx.math.Vector2;
@@ -7,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.engine.configs.AConstants;
 import com.mygdx.engine.configs.AConstants.Platform;
 import com.mygdx.engine.game.CollisionListenerBox2d;
+import com.mygdx.engine.scripting.TestScripting;
 
 import bombermantest.client.network.client.game.GameClient;
 import bombermantest.client.network.client.login.LoginClient;
@@ -38,9 +40,25 @@ public class ClientGame extends TestGame {
 		singleton = this;
 	}
 	
+	public static int i = 0;
+	
 	@Override
 	public void create () {
 		super.create();
+
+		AConstants.loadFolder(AConstants.path + "scripts/", f -> f.name().contentEquals("ha.scala"), f -> {
+			try {
+				System.out.println("evaluating "+f.name());
+				for(i = 0; i < 10000; i++){
+					TestScripting.eval(f.file());
+				}
+				TestScripting.eval(f.file());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+		
+		//ha.main();
 		
 		universe.collis = new CollisionListenerBox2d(this);
 		universe.world = new World(new Vector2(0, -9.81f).scl(0.0f), false);

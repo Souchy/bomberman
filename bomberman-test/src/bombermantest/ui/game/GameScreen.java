@@ -2,7 +2,6 @@ package bombermantest.ui.game;
 
 import java.util.concurrent.Executors;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g3d.Environment;
