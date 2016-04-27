@@ -7,10 +7,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.mygdx.engine.configs.AConstants;
 
-import bombermantest.game.injectors.ClientPacketInjector;
-import bombermantest.game.injectors.EntityEncoderInjector;
 import bombermantest.game.injectors.EventListenerRegister;
-import bombermantest.game.injectors.LoginPacketInjector;
 import bombermantest.game.network.game.client.GClientHandler;
 import bombermantest.game.network.game.client.GClientServer;
 import bombermantest.game.network.game.login.GLoginClient;
@@ -36,17 +33,13 @@ public class BombermanTestGame {
 	    
 		new LwjglApplication(GameGame.get(), config);
 		
-		LoginPacketInjector.inject();
-		ClientPacketInjector.inject();
-		EntityEncoderInjector.inject();
+		//LoginPacketInjector.inject();
+		//ClientPacketInjector.inject();
+		//EntityEncoderInjector.inject();
 		EventListenerRegister.register();
 		
 		GClientServer.get().setHandler(new GClientHandler());
 		GLoginClient.get().setHandler(new GLoginHandler());
-		
-		GLoginClient.get().on();
-		GClientServer.get().on();
-		
 	}
 
 }

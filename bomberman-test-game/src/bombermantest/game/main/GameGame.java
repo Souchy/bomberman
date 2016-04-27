@@ -12,8 +12,11 @@ import bombermantest.configs.Constants;
 import bombermantest.enums.ClientState;
 import bombermantest.enums.GameState;
 import bombermantest.events.GameStateChangeEvent;
+import bombermantest.game.injectors.EventListenerRegister;
+import bombermantest.game.network.game.client.GClientHandler;
 import bombermantest.game.network.game.client.GClientServer;
 import bombermantest.game.network.game.login.GLoginClient;
+import bombermantest.game.network.game.login.GLoginHandler;
 import bombermantest.game.ui.components.ChatboxEntryInputListener;
 import bombermantest.main.TestGame;
 import bombermantest.network.objects.GClient;
@@ -27,7 +30,6 @@ import bombermantest.ui.game.Scoreboard;
 import bombermantest.ui.game.StatusHud;
 
 public class GameGame extends TestGame {
-
 	
 	public static GameGame get(){
 		if(singleton == null) singleton = new GameGame();
@@ -42,6 +44,9 @@ public class GameGame extends TestGame {
 	@Override
 	public void create () {
 		super.create();
+
+		GLoginClient.get().on();
+		GClientServer.get().on();
 		
 		universe.collis = new CollisionListenerBox2d(this);
 		universe.world = new World(new Vector2(0, -9.81f).scl(0.0f), false);
