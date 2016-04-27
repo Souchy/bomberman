@@ -1,5 +1,7 @@
 package bombermantest.game.network.client.entityencoders;
 
+import java.nio.charset.CharacterCodingException;
+
 import org.apache.mina.core.buffer.IoBuffer;
 
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
@@ -8,6 +10,7 @@ import com.mygdx.engine.objects.items.scenery.wall.UnbreakableBlock;
 import com.mygdx.engine.services.ModelsLoader;
 
 import bombermantest.network.entities.EntityEncoder;
+import bombermantest.network.packets.Composer;
 
 public class UnbreakableBlockEncoder implements EntityEncoder<UnbreakableBlock> {
 
@@ -23,9 +26,14 @@ public class UnbreakableBlockEncoder implements EntityEncoder<UnbreakableBlock> 
 		buf.putInt(rgb[0]);
 		buf.putInt(rgb[1]);
 		buf.putInt(rgb[2]);
-
-		int gfxId = ModelsLoader.singleton.indexOfKey(gfxname);
-		buf.putInt(gfxId);
+		
+		try {
+			buf.putPrefixedString(gfxname, Composer.encoder);
+		} catch (CharacterCodingException e) {
+			e.printStackTrace();
+		}
+		//int gfxId = ModelsLoader.singleton.indexOfKey(gfxname);
+		//buf.putInt(gfxId);
 		//System.out.println("Encoding, gfxid = ["+gfxId+"] gfxname =["+gfxname+"]");
 
 	}

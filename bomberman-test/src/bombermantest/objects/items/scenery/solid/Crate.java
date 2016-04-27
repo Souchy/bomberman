@@ -27,7 +27,7 @@ public class Crate extends Block2d {
 
 	public Crate(AGame game, Vector3 pos) {
 		super(game, pos, "tilewhite1");
-		gfx.materials.peek().set(colorAttr);
+		gfx.materials.forEach(m -> m.set(colorAttr));//.peek().set(colorAttr);
 	}
 	
 

@@ -160,12 +160,12 @@ public class PlayerController extends AController {
 			
 			//ClientSender.sendPos(game.universe.player);
 			//if(AGame.platform != AConstants.Platform.Server) 
-				sendPos();
 			
 			//System.out.println("delta = ["+(delta*1000)+"], dTime = ["+dTime+"]");
 			//System.out.println("fps controller : ["+(1/delta)+"], fpsTime = ["+(1000/dTime)+"], pos = ["+pos+"], accelForce = ["+stats.accelForce+"], u = ["+u+"]");
 		}
-		//body.applyForceToCenter(u.scl(stats.accelForce), true);
+		
+		sendPos();
 	}
 
 	/**

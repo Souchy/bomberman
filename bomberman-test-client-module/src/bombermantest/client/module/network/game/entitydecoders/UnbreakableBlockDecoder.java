@@ -1,4 +1,4 @@
-package bombermantest.client.network.game.entitydecoders;
+package bombermantest.client.module.network.game.entitydecoders;
 
 import java.nio.charset.CharacterCodingException;
 

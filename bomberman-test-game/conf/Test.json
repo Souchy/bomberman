@@ -1,0 +1,8 @@
+{
+    allVisible:false,
+    map:false,
+    playerskin:"roshi",
+    drawDebug:false,
+    drawGrid:false,
+    particle:"c4"
+}

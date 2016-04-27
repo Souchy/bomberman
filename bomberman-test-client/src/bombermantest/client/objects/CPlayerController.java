@@ -1,5 +1,9 @@
 package bombermantest.client.objects;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.engine.objects.weapons.Weapon;
 
@@ -13,6 +17,10 @@ public class CPlayerController extends PlayerController {
 
 	public CPlayerController(BPlayer player) {
 		super(player);
+		
+		//ScheduledExecutorService serv = Executors.newSingleThreadScheduledExecutor();
+		//serv.scheduleAtFixedRate(this::sendPos2, 1/60L, 1/60L, TimeUnit.SECONDS); // délai entre le début de chaque action
+		//serv.scheduleWithFixedDelay(this::sendPos2, 1/60L, 1/60L, TimeUnit.SECONDS); //délai entre la fin d'une action et le début de la prochaine
 	}
 	
 	/**
