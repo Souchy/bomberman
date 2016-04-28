@@ -26,8 +26,8 @@ public class NormalBomb extends Projectile {
 		
 		//gfx = new ModelInstance(ModelsLoader.singleton.get("bomb"));
 		gfx = new ModelInstance(ModelsLoader.singleton.get("Tron_Ball(solo)"));
-		gfx.transform.scale(7, 7, 7);
-		gfx.transform.setTranslation(new Vector3(pos, 0));
+		gfx.transform.scale(8, 8, 8);
+		gfx.transform.setTranslation(new Vector3((float) Math.floor(pos.x) + 0.4f, (float) Math.floor(pos.y) + 0.4f, 0));
 		gfx.userData = this;
 	}
 	

@@ -20,7 +20,7 @@ public class SpectatingClickListener extends ClickListener {
 		super.clicked(event, x, y);
 		if(TestGame.get().getClientState() == ClientState.SPECTATING //|| 
 			//(TestGame.get().getClientState() == ClientState.PLAYING && TestGame.get().universe.player.getStats().life <= 0) // si le main player est mort, il peut spec les autres
-			// ^ pu besoin de ça, mtn on met le state du player à spectating quand il meurt
+			// ^ pu besoin de Ã§a, mtn on met le state du player Ã  spectating quand il meurt
 		){
 			//System.out.println("clicking, index=["+index+"/"+Client.get().players.size()+"], camTarget=["+camTarget+"], mainPlay=["+TestGame.get().universe.player+"]");
 			
