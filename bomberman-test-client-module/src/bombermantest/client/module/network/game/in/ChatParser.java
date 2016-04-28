@@ -18,7 +18,7 @@ public class ChatParser implements Parser {
 			String message = buf.getPrefixedString(decoder);
 			int color = buf.getInt();
 			
-			ChatboxArea.get().setColor(new Color(color));
+			//ChatboxArea.get().setColor(new Color(color));
 			ChatboxArea.get().addMessage(message);
 			
 		} catch (CharacterCodingException e) {

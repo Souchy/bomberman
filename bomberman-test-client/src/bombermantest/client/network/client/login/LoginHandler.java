@@ -28,7 +28,7 @@ public class LoginHandler extends ClientHandler {
 		
 		if(!packet.isLengthCorrect(packetlength)){
 			System.out.println("client receiv buf size invalid (packet="+packet.name()+"), (packetlength="+packetlength+"), (remain="+buf.remaining()+"), buf : "+buf.toString());
-			//àreturn;
+			//return;
 		}
 		
 		packet.parse(session, buf);

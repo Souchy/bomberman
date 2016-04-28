@@ -1,3 +1,6 @@
+package scripts.scala.main
+
+
 object hi {
   
     //def main(args: Array[String]): Unit = {

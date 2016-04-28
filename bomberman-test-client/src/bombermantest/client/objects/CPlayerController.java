@@ -15,8 +15,8 @@ public class CPlayerController extends PlayerController {
 		super(player);
 		
 		//ScheduledExecutorService serv = Executors.newSingleThreadScheduledExecutor();
-		//serv.scheduleAtFixedRate(this::sendPos2, 1/60L, 1/60L, TimeUnit.SECONDS); // délai entre le début de chaque action
-		//serv.scheduleWithFixedDelay(this::sendPos2, 1/60L, 1/60L, TimeUnit.SECONDS); //délai entre la fin d'une action et le début de la prochaine
+		//serv.scheduleAtFixedRate(this::sendPos2, 1/60L, 1/60L, TimeUnit.SECONDS); // dÃ©lai entre le dÃ©but de chaque action
+		//serv.scheduleWithFixedDelay(this::sendPos2, 1/60L, 1/60L, TimeUnit.SECONDS); //dÃ©lai entre la fin d'une action et le dÃ©but de la prochaine
 	}
 	
 	/**

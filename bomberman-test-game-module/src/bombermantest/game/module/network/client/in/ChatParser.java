@@ -27,14 +27,16 @@ public class ChatParser implements Parser {
 			Collection<IoSession> sessions = GClientServer.get().getSessionList();
 			if(color != Color.rgba8888(Color.YELLOW)){
 				sessions = GClientServer.get().getSessionList().stream()
-						   .filter(s -> ((GClient) s.getAttribute(ServerHandler.CLIENT_ATTR_KEY)).team == color).collect(Collectors.toList());
+							.filter(s -> s != session)
+							.filter(s -> ((GClient) s.getAttribute(ServerHandler.CLIENT_ATTR_KEY)).team == color)
+							.collect(Collectors.toList());
 			}
 			
-			// Envoie le message à tous les joueurs de la même couleur (team) sauf à celui qui a écrit le message
-			sessions.remove(session);
+			// Envoie le message Ã  tous les joueurs de la mÃªme couleur (team) sauf Ã  celui qui a Ã©crit le message
+			//sessions.remove(session);
 			GameClientPackets.CHAT.broadcast(sessions, message, color);
 			
-			ChatboxArea.get().setColor(new Color(color));
+			//ChatboxArea.get().setColor(new Color(color));
 			ChatboxArea.get().addMessage(message);
 			
 		} catch (CharacterCodingException e) {

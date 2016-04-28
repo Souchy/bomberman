@@ -138,7 +138,7 @@ public class LoginScreen extends Screen3d  {
 
 	@Override
 	public void preDrawHook(float delta) {
-		// affiche quand même l'écran de jeu en arrière plan
+		// affiche quand mÃªme l'Ã©cran de jeu en arriÃ¨re plan
 		//game.game.draw(delta);
 		//game.game.drawHud(delta);
 	}

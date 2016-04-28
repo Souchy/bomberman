@@ -1,3 +1,5 @@
+package scripts.scala.main
+
 object ha {
   	
   	import bombermantest.client.main.ClientGame._

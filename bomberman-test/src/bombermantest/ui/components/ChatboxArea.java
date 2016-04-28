@@ -44,7 +44,7 @@ public class ChatboxArea extends VisTextArea {
 		cbStyle.fontColor = fontcolor;
 		cbStyle.focusedFontColor = fontcolor;
 		cbStyle.messageFont = new BitmapFont();
-		cbStyle.messageFontColor = Color.YELLOW;
+		cbStyle.messageFontColor = Color.WHITE; //Color.YELLOW;
 		cbStyle.selection = skin.newDrawable("white", Color.TEAL);
 		
 		setStyle(cbStyle);

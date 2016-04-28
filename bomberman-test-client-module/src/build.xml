@@ -4,7 +4,7 @@
   	<target name="CreateJar" description="Create Jar file">
   		
 		<jar jarfile="ClientModule.jar" basedir="." includes="**/*.class" />
-  		<copy file="ClientModule.jar" toFile="F:/Users/Souchy/Desktop/Robyn/Git/bomberman/bomberman-test-client/plugins/ClientModule.jar"/>
+  		<copy file="ClientModule.jar" toFile="F:/Users/Souchy/Desktop/Robyn/Git/bomberman/bomberman-test-client/plugins/plugins/ClientModule.jar"/>
   		
   	</target>
 </project>
