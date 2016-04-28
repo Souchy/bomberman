@@ -23,8 +23,10 @@ public class NormalBomb extends Projectile {
 	
 	public NormalBomb(AGame game, Vector2 pos, EntityStats weaponHolderStats) {
 		super(game, pos, Vector2.Zero, weaponHolderStats);
-
-		gfx = new ModelInstance(ModelsLoader.singleton.get("penguin"));
+		
+		//gfx = new ModelInstance(ModelsLoader.singleton.get("bomb"));
+		gfx = new ModelInstance(ModelsLoader.singleton.get("Tron_Ball(solo)"));
+		gfx.transform.scale(7, 7, 7);
 		gfx.transform.setTranslation(new Vector3(pos, 0));
 		gfx.userData = this;
 	}
