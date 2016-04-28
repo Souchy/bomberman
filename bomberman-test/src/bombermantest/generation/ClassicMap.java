@@ -37,10 +37,10 @@ public class ClassicMap implements Generator {
 					wall.setColor(gray);
 					wall.publish(usePostRunnable);
 					map.add(wall);
-				}
-				else if (AConstants.rnd.nextBoolean()){
+				} else 
+				if (AConstants.rnd.nextInt(3) == 0){ // 1/3 chances
 					Crate crate = new Crate(game, new Vector3(x, y, 0));
-					//crate.setColor(brown); dÈj‡ fait dans le constructeur de Crate
+					//crate.setColor(brown); d√©j√† fait dans le constructeur de Crate
 					crate.publish(usePostRunnable); 
 					map.add(crate);
 				}
