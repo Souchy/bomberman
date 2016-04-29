@@ -17,10 +17,10 @@ import static com.badlogic.gdx.Input.Keys.W;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.mygdx.engine.configs.Test;
 import com.mygdx.engine.objects.characters.playables.AController;
 import com.mygdx.engine.objects.weapons.Weapon;
 
+import bombermantest.configs.Test;
 import bombermantest.ui.components.ChatboxEntry;
 
 public class PlayerController extends AController {
@@ -50,7 +50,7 @@ public class PlayerController extends AController {
 	public void control(float delta) {
 		
 		if(ChatboxEntry.focused){
-			return; // Désactive les contrôles du personnage si le focus est donné au chatboxentry (= la personne est en train d'écrire)
+			return; // Dï¿½sactive les contrï¿½les du personnage si le focus est donnï¿½ au chatboxentry (= la personne est en train d'ï¿½crire)
 		}
 
 		/*equipCooldown -= delta;
@@ -80,7 +80,7 @@ public class PlayerController extends AController {
 		if(stats.life <= 0){
 			
 			
-			return; // désactive certains contrôles si le player est mort
+			return; // dï¿½sactive certains contrï¿½les si le player est mort
 		}
 		
 		/*if(Gdx.input.isKeyPressed(NUM_1)) weapon = p.weapon = new Gun();

@@ -1,8 +1,11 @@
 {
-    allVisible:false,
-    map:false,
-    playerskin:"roshi",
-    drawDebug:false,
-    drawGrid:false,
-    particle:"c4"
+    allVisible: false,
+    map: false,
+    playerskin: "roshi",
+    drawDebug: false,
+    drawGrid: false,
+    particle: "c4",
+	crateGenerationRate: 20
+	
+	
 }

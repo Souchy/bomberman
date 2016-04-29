@@ -2,13 +2,13 @@ package bombermantest.client.ui.components;
 
 import java.util.HashMap;
 
-
 import bombermantest.client.main.testClientConfig;
 import bombermantest.client.network.client.game.GameClient;
 import bombermantest.client.ui.components.commands.ChatCommand;
 import bombermantest.network.packets.enums.GameClientPackets;
 import bombermantest.ui.components.AChatboxEntryInputListener;
-import scripts.scala.ui.components.commands.*;
+import scripts.scala.ui.components.commands.All;
+import scripts.scala.ui.components.commands.Suicide;
 
 public class ChatboxEntryInputListener extends AChatboxEntryInputListener {
 	

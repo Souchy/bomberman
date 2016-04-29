@@ -9,6 +9,7 @@ import com.mygdx.engine.game.AGame;
 import com.mygdx.engine.objects.items.Item;
 import com.mygdx.engine.objects.items.scenery.wall.UnbreakableBlock;
 
+import bombermantest.configs.Test;
 import bombermantest.objects.items.scenery.solid.Crate;
 
 public class ClassicMap implements Generator {
@@ -38,7 +39,7 @@ public class ClassicMap implements Generator {
 					wall.publish(usePostRunnable);
 					map.add(wall);
 				} else 
-				if (AConstants.rnd.nextInt(3) == 0){ // 1/3 chances
+				if (Test.get().crateGenerationRate >= AConstants.rnd.nextDouble()*100+1){ 
 					Crate crate = new Crate(game, new Vector3(x, y, 0));
 					//crate.setColor(brown); déjà fait dans le constructeur de Crate
 					crate.publish(usePostRunnable); 

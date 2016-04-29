@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.mygdx.engine.configs.AConstants;
-import com.mygdx.engine.configs.Test;
 import com.mygdx.engine.game.AGame;
 import com.mygdx.engine.objects.characters.EntityStats;
 import com.mygdx.engine.objects.characters.playables.APlayer;
@@ -14,6 +13,7 @@ import com.mygdx.engine.objects.characters.playables.mounts.Mount;
 import com.mygdx.engine.objects.weapons.Weapon;
 import com.mygdx.engine.services.ModelsLoader;
 
+import bombermantest.configs.Test;
 import bombermantest.network.objects.GClient;
 import bombermantest.objects.weapons.BombPlacer;
 
@@ -34,7 +34,7 @@ public class BPlayer extends APlayer {
 		getStats().defense = 0;
 		getStats().life = 20;
 		getStats().maxLife = 100;
-		getStats().accelForce = new Vector2(3, 3); // vitesse en mètres / sec
+		getStats().accelForce = new Vector2(3, 3); // vitesse en mï¿½tres / sec
 		//getStats().power = 1;
 		//getStats().nbBombs = 1;
 	}

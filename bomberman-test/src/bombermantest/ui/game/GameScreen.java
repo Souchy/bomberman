@@ -16,12 +16,12 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.google.common.eventbus.Subscribe;
 import com.mygdx.engine.actors.MyLabel;
-import com.mygdx.engine.configs.Test;
 import com.mygdx.engine.game.Universe;
 import com.mygdx.engine.objects.Box2dObject;
 import com.mygdx.engine.screens.Screen3d;
 import com.mygdx.engine.services.FontsLoader;
 
+import bombermantest.configs.Test;
 import bombermantest.enums.ClientState;
 import bombermantest.events.SpectatingClickListener;
 import bombermantest.events.TextPopupEvent;
@@ -128,7 +128,7 @@ public class GameScreen extends Screen3d {
 		if(camTarget == null /*|| camTarget.body == null*/) return;
 		/*if(camTarget.body == null){
 			camTarget = TestGame.get().universe.player;
-			System.err.println("WTF CAMTARGET BODY NULL, finalement ça l'air d'être juste pcq le camTarget en question a déconnecté");
+			System.err.println("WTF CAMTARGET BODY NULL, finalement ï¿½a l'air d'ï¿½tre juste pcq le camTarget en question a dï¿½connectï¿½");
 		}*/
 	}
 	
@@ -179,7 +179,7 @@ public class GameScreen extends Screen3d {
 		
 		/*// Draw the scoreboard hud
 		if(Gdx.input.isKeyPressed(Keys.TAB)){
-			// affiche l'écran de score par dessus le reste
+			// affiche l'ï¿½cran de score par dessus le reste
 			ScoreboardScreen.get().drawHud(delta);
 		}*/
 		
@@ -227,7 +227,7 @@ public class GameScreen extends Screen3d {
        		camTarget = TestGame.get().universe.player;
        	} else {
        		TestGame.get().getClientList().stream()
-       				.filter(c -> c.state == ClientState.PLAYING) // SI T'ES PLAYING, ÇA IMPLIQUE QUE T'AS UN BPLAYER ET QUE T'ES PAS MORT
+       				.filter(c -> c.state == ClientState.PLAYING) // SI T'ES PLAYING, ï¿½A IMPLIQUE QUE T'AS UN BPLAYER ET QUE T'ES PAS MORT
        				.filter(c -> c.player != null)
        				.filter(c -> c.player.body != null) // il est ptete pas encore build() par contre
        				.findFirst()
