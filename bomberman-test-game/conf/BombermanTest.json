@@ -1,11 +1,10 @@
 {
     allVisible: false,
     map: false,
-    playerskin: "roshi",
+    playerskin: "penguin",
     drawDebug: false,
     drawGrid: false,
     particle: "c4",
-	crateGenerationRate: 100
-	
+	crateGenerationRate: 25
 	
 }

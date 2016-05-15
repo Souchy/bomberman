@@ -9,7 +9,7 @@ import com.mygdx.engine.game.AGame;
 import com.mygdx.engine.objects.items.Item;
 import com.mygdx.engine.objects.items.scenery.wall.UnbreakableBlock;
 
-import bombermantest.configs.Test;
+import bombermantest.configs.BombermanTest;
 import bombermantest.objects.items.scenery.solid.Crate;
 
 public class ClassicMap implements Generator {
@@ -27,10 +27,12 @@ public class ClassicMap implements Generator {
 		for(int y = 0; y < mapWidth; y++){
 			for(int x = 0; x < mapWidth; x++){
 				// Plancher
-				UnbreakableBlock floor = new UnbreakableBlock(game, new Vector3(x, y, -1), "tilewhite1");
+				/*UnbreakableBlock floor = new UnbreakableBlock(game, new Vector3(x, y, -1), "tilewhite1");
 				floor.setColor(white);
 				floor.publish(usePostRunnable);
-				map.add(floor);
+				map.add(floor);*/
+				
+				System.out.println("Test.get().crateGenerationRate = ["+BombermanTest.get().crateGenerationRate+"]");
 				
 				// Obstacles
 				if(y % 2 == 0 && x % 2 == 0){
@@ -39,7 +41,7 @@ public class ClassicMap implements Generator {
 					wall.publish(usePostRunnable);
 					map.add(wall);
 				} else 
-				if (Test.get().crateGenerationRate >= AConstants.rnd.nextDouble()*100+1){ 
+				if (BombermanTest.get().crateGenerationRate >= AConstants.rnd.nextDouble()*100){ 
 					Crate crate = new Crate(game, new Vector3(x, y, 0));
 					//crate.setColor(brown); déjà fait dans le constructeur de Crate
 					crate.publish(usePostRunnable); 

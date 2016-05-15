@@ -2,7 +2,6 @@ package bombermantest.objects.projectiles;
 
 import com.badlogic.gdx.graphics.g3d.Model;
 import com.badlogic.gdx.graphics.g3d.ModelInstance;
-import com.badlogic.gdx.graphics.g3d.attributes.BlendingAttribute;
 import com.badlogic.gdx.graphics.g3d.model.Node;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Vector2;
@@ -61,7 +60,7 @@ public class ExplosionWave extends Projectile {
 		
 		gfx = new ModelInstance(model);  // ModelsLoader.singleton.get("tree")
 		gfx.transform.setTranslation(new Vector3(pos, 0));
-		gfx.nodes.forEach(n -> System.out.println("n name = ["+n.id+"]"));
+		//gfx.nodes.forEach(n -> System.out.println("n name = ["+n.id+"]"));
 		gfx.userData = this;
 	}
 

@@ -20,7 +20,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.mygdx.engine.objects.characters.playables.AController;
 import com.mygdx.engine.objects.weapons.Weapon;
 
-import bombermantest.configs.Test;
+import bombermantest.configs.BombermanTest;
 import bombermantest.ui.components.ChatboxEntry;
 
 public class PlayerController extends AController {
@@ -50,7 +50,7 @@ public class PlayerController extends AController {
 	public void control(float delta) {
 		
 		if(ChatboxEntry.focused){
-			return; // D�sactive les contr�les du personnage si le focus est donn� au chatboxentry (= la personne est en train d'�crire)
+			return; // Désactive les contrôles du personnage si le focus est donné au chatboxentry (= la personne est en train d'écrire)
 		}
 
 		/*equipCooldown -= delta;
@@ -65,8 +65,8 @@ public class PlayerController extends AController {
 		//if(Gdx.input.isKeyPressed(X)) p.dirAngles.y += 90;
 		//if(Gdx.input.isKeyPressed(C)) p.dirAngles.z += 90;
 		//if(Gdx.input.isKeyPressed(M)) p.equipMount(Game3d.testmount);
-		if(Gdx.input.isKeyPressed(Q)) Test.get().drawDebug = !Test.get().drawDebug;
-		if(Gdx.input.isKeyPressed(G)) Test.get().drawGrid = !Test.get().drawGrid;
+		if(Gdx.input.isKeyPressed(Q)) BombermanTest.get().drawDebug = !BombermanTest.get().drawDebug;
+		if(Gdx.input.isKeyPressed(G)) BombermanTest.get().drawGrid = !BombermanTest.get().drawGrid;
 		//if(Gdx.input.isKeyPressed(Y)) System.out.println("camry y : [" + screen.cam.position.y + "]");
 		//if(Gdx.input.isKeyPressed(X)) System.out.println("camry x : [" + screen.cam.position.x + "]");
 		//if(Gdx.input.isKeyPressed(C)) crouch = true;

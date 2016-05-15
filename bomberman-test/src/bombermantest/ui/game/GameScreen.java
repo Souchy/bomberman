@@ -21,7 +21,7 @@ import com.mygdx.engine.objects.Box2dObject;
 import com.mygdx.engine.screens.Screen3d;
 import com.mygdx.engine.services.FontsLoader;
 
-import bombermantest.configs.Test;
+import bombermantest.configs.BombermanTest;
 import bombermantest.enums.ClientState;
 import bombermantest.events.SpectatingClickListener;
 import bombermantest.events.TextPopupEvent;
@@ -156,7 +156,7 @@ public class GameScreen extends Screen3d {
 		modelBatch.end();
 		
 		// Draw Debug
-		if(Test.get().drawDebug){
+		if(BombermanTest.get().drawDebug){
 			renderer.render(TestGame.get().universe.world, playCam.combined); // Box2d Debug Renderer
 		}
 

@@ -13,7 +13,7 @@ import com.mygdx.engine.objects.characters.playables.mounts.Mount;
 import com.mygdx.engine.objects.weapons.Weapon;
 import com.mygdx.engine.services.ModelsLoader;
 
-import bombermantest.configs.Test;
+import bombermantest.configs.BombermanTest;
 import bombermantest.network.objects.GClient;
 import bombermantest.objects.weapons.BombPlacer;
 
@@ -46,7 +46,7 @@ public class BPlayer extends APlayer {
 	
 	public BPlayer(AGame game, Vector3 pos) {
 		super(game, pos);
-		gfx = new ModelInstance(ModelsLoader.singleton.get(Test.get().playerskin));
+		gfx = new ModelInstance(ModelsLoader.singleton.get(BombermanTest.get().playerskin));
 		dirAngles.x = 90;
 		//dirAngles.z = 90;
 		gfx.transform.setTranslation(pos);
